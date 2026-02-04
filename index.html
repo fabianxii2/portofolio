@@ -1,1196 +1,573 @@
 <!doctype html>
-<html lang="id">
+<html lang="id" class="h-full scroll-smooth">
  <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Pantai Pondok Bali - Surga Tersembunyi di Bali</title>
-  <meta name="description" content="Kunjungi Pantai Pondok Bali, destinasi wisata alam yang memukau dengan pemandangan pantai indah, fasilitas lengkap, dan pengalaman tak terlupakan.">
-  <script src="/_sdk/data_sdk.js"></script>
-  <script src="/_sdk/element_sdk.js"></script>
+  <title>Fabian Hernawan - Portfolio</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <script src="/_sdk/element_sdk.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&amp;family=Sora:wght@400;600;700&amp;display=swap" rel="stylesheet">
   <style>
-        body {
-            box-sizing: border-box;
-        }
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+    body {
+      box-sizing: border-box;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+    
+    * {
+      box-sizing: border-box;
+    }
 
-        :root {
-            --bg-primary: #0f172a;
-            --bg-secondary: #1e293b;
-            --text-primary: #f1f5f9;
-            --accent-primary: #3b82f6;
-            --accent-secondary: #06b6d4;
-        }
+    .gradient-ocean {
+      background: linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%);
+    }
 
-        .light-mode {
-            --bg-primary: #f8fafc;
-            --bg-secondary: #ffffff;
-            --text-primary: #1e293b;
-            --accent-primary: #2563eb;
-            --accent-secondary: #0891b2;
-        }
+    .gradient-accent {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    }
 
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: var(--bg-primary);
-            color: var(--text-primary);
-            transition: all 0.3s ease;
-        }
+    .gradient-text {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
 
-        .parallax-section {
-            background-attachment: fixed;
-            background-position: center;
-            background-repeat: no-repeat;
-            background-size: cover;
-        }
+    .card-glass {
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
 
-        .fade-in {
-            animation: fadeIn 0.6s ease-in;
-        }
+    .card-glass:hover {
+      background: rgba(255, 255, 255, 0.08);
+      transform: translateY(-8px);
+      box-shadow: 0 20px 40px rgba(102, 126, 234, 0.3);
+    }
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
+    .card-white {
+      transition: all 0.3s ease;
+    }
 
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-20px); }
-        }
+    .card-white:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+    }
 
-        @keyframes slideIn {
-            from { opacity: 0; transform: translateX(-50px); }
-            to { opacity: 1; transform: translateX(0); }
-        }
+    .nav-link {
+      position: relative;
+      transition: color 0.3s ease;
+    }
 
-        @keyframes pulse-glow {
-            0%, 100% { box-shadow: 0 0 20px rgba(59, 130, 246, 0.5); }
-            50% { box-shadow: 0 0 40px rgba(59, 130, 246, 0.8); }
-        }
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      transition: width 0.3s ease;
+    }
 
-        .float-animation {
-            animation: float 3s ease-in-out infinite;
-        }
+    .nav-link:hover::after {
+      width: 100%;
+    }
 
-        .slide-in {
-            animation: slideIn 0.8s ease-out;
-        }
+    .btn-gradient {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      transition: all 0.3s ease;
+    }
 
-        .hover-glow:hover {
-            animation: pulse-glow 2s infinite;
-        }
+    .btn-gradient:hover {
+      transform: scale(1.05);
+      box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+    }
 
-        .glass-effect {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
+    .skill-bar {
+      transition: width 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+    }
 
-        .light-mode .glass-effect {
-            background: rgba(255, 255, 255, 0.9);
-            border: 1px solid rgba(0, 0, 0, 0.1);
-        }
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-20px); }
+    }
 
-        .chatbot-bubble {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            z-index: 1000;
-        }
+    .float-animation {
+      animation: float 6s ease-in-out infinite;
+    }
 
-        .hidden {
-            display: none;
-        }
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(40px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
 
-        .counter {
-            font-size: 2.5rem;
-            font-weight: bold;
-        }
+    .fade-in-up {
+      animation: fadeInUp 0.8s ease-out forwards;
+    }
 
-        .star-rating {
-            color: #fbbf24;
-        }
+    .section-reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    }
 
-        @media (max-width: 768px) {
-            .counter { font-size: 2rem; }
-        }
-    </style>
+    .section-reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .header-blur {
+      backdrop-filter: blur(10px);
+      background: rgba(255, 255, 255, 0.95);
+    }
+  </style>
   <style>@view-transition { navigation: auto; }</style>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
  </head>
- <body><!-- Header / Navbar -->
-  <header class="fixed w-full top-0 z-50 glass-effect">
-   <nav class="container mx-auto px-6 py-4">
-    <div class="flex justify-between items-center">
-     <div class="flex items-center space-x-2">
-      <svg class="w-10 h-10" fill="currentColor" viewbox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-5.5-2.5l7.51-3.49L17.5 6.5 9.99 9.99 6.5 17.5zm5.5-6.6c.61 0 1.1.49 1.1 1.1s-.49 1.1-1.1 1.1-1.1-.49-1.1-1.1.49-1.1 1.1-1.1z" />
-      </svg><span class="text-2xl font-bold" id="site-title">Pantai Pondok Bali</span>
-     </div>
-     <div class="hidden md:flex items-center space-x-6"><a href="#home" class="hover:text-blue-400 transition">Beranda</a> <a href="#about" class="hover:text-blue-400 transition">Tentang</a> <a href="#gallery" class="hover:text-blue-400 transition">Galeri</a> <a href="#tickets" class="hover:text-blue-400 transition">Tiket</a> <a href="#facilities" class="hover:text-blue-400 transition">Fasilitas</a> <a href="#events" class="hover:text-blue-400 transition">Event</a> <a href="#testimonials" class="hover:text-blue-400 transition">Ulasan</a> <a href="#blog" class="hover:text-blue-400 transition">Blog</a> <a href="#contact" class="hover:text-blue-400 transition">Kontak</a> <select id="language-switcher" class="bg-transparent border border-gray-400 rounded px-2 py-1"> <option value="id">🇮🇩 ID</option> <option value="en">�����🇧 EN</option> </select> <button id="theme-toggle" class="p-2 rounded-full hover:bg-gray-700 transition">
-       <svg class="w-6 h-6" fill="currentColor" viewbox="0 0 24 24"><path d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
-       </svg></button>
-     </div><button id="mobile-menu-toggle" class="md:hidden p-2">
-      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-      </svg></button>
-    </div>
-    <div id="mobile-menu" class="hidden md:hidden mt-4 pb-4">
-     <div class="flex flex-col space-y-3"><a href="#home" class="hover:text-blue-400 transition">Beranda</a> <a href="#about" class="hover:text-blue-400 transition">Tentang</a> <a href="#gallery" class="hover:text-blue-400 transition">Galeri</a> <a href="#tickets" class="hover:text-blue-400 transition">Tiket</a> <a href="#facilities" class="hover:text-blue-400 transition">Fasilitas</a> <a href="#events" class="hover:text-blue-400 transition">Event</a> <a href="#testimonials" class="hover:text-blue-400 transition">Ulasan</a> <a href="#blog" class="hover:text-blue-400 transition">Blog</a> <a href="#contact" class="hover:text-blue-400 transition">Kontak</a>
-     </div>
-    </div>
-   </nav>
-  </header><!-- Hero Section -->
-  <section id="home" class="relative h-full min-h-full pt-20 overflow-hidden" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);"><!-- Animated Background Elements -->
-   <div class="absolute inset-0 overflow-hidden opacity-20">
-    <div class="absolute top-20 left-10 w-72 h-72 bg-white rounded-full blur-3xl float-animation"></div>
-    <div class="absolute bottom-20 right-10 w-96 h-96 bg-blue-300 rounded-full blur-3xl float-animation" style="animation-delay: 1s;"></div>
-    <div class="absolute top-40 right-20 w-48 h-48 bg-purple-300 rounded-full blur-3xl float-animation" style="animation-delay: 2s;"></div>
-   </div>
-   <div class="container mx-auto px-6 py-24 text-center relative z-10">
-    <div class="inline-block mb-4 bg-white bg-opacity-20 backdrop-blur-sm px-6 py-2 rounded-full text-sm font-semibold slide-in">
-     🏖️ Destinasi Wisata #1 di Karawang
-    </div>
-    <h1 class="text-5xl md:text-7xl font-bold mb-6 fade-in drop-shadow-2xl" id="hero-title">Surga Tersembunyi di Pondok Bali</h1>
-    <p class="text-xl md:text-2xl mb-8 fade-in drop-shadow-lg" id="hero-subtitle">Keindahan alam yang memukau menanti Anda</p>
-    <div class="flex justify-center gap-4 mb-12 fade-in"><a href="#tickets" class="bg-white text-purple-600 px-8 py-3 rounded-full font-semibold hover:bg-gray-100 transition transform hover:scale-110 hover-glow shadow-2xl">Pesan Tiket</a> <a href="#virtual-tour" class="bg-transparent border-2 border-white px-8 py-3 rounded-full font-semibold hover:bg-white hover:text-purple-600 transition transform hover:scale-110 shadow-lg">Virtual Tour</a>
-    </div><!-- Search Bar -->
-    <div class="max-w-2xl mx-auto mb-8">
-     <div class="flex bg-white rounded-full overflow-hidden shadow-lg"><input type="text" id="search-input" placeholder="Cari destinasi, aktivitas, atau fasilitas..." class="flex-1 px-6 py-4 text-gray-800 outline-none"> <button class="bg-blue-500 text-white px-8 hover:bg-blue-600 transition">
-       <svg class="w-6 h-6" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+ <body class="h-full w-full overflow-auto">
+  <div class="min-h-full w-full"><!-- Header Navigation -->
+   <header id="header" class="fixed top-0 left-0 right-0 z-50 header-blur shadow-sm">
+    <nav class="max-w-7xl mx-auto px-6 py-4">
+     <div class="flex justify-between items-center">
+      <h1 id="site-name" class="text-2xl font-bold gradient-text">Fabian Hernawan</h1>
+      <div class="hidden md:flex items-center space-x-8"><a href="#home" class="nav-link text-gray-700 hover:text-purple-600 font-medium">Home</a> <a href="#about" class="nav-link text-gray-700 hover:text-purple-600 font-medium">About</a> <a href="#skills" class="nav-link text-gray-700 hover:text-purple-600 font-medium">Skills</a> <a href="#portfolio" class="nav-link text-gray-700 hover:text-purple-600 font-medium">Portfolio</a> <a href="#contact" class="nav-link text-gray-700 hover:text-purple-600 font-medium">Contact</a>
+      </div><button id="mobile-menu-btn" class="md:hidden text-gray-700 p-2">
+       <svg class="w-6 h-6" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
        </svg></button>
      </div>
-    </div><!-- Weather Widget -->
-    <div class="glass-effect inline-block px-6 py-3 rounded-lg">
-     <div class="flex items-center gap-3">
-      <svg class="w-8 h-8 text-yellow-300" fill="currentColor" viewbox="0 0 24 24"><path d="M12 2.25a.75.75 0 01.75.75v2.25a.75.75 0 01-1.5 0V3a.75.75 0 01.75-.75zM7.5 12a4.5 4.5 0 119 0 4.5 4.5 0 01-9 0zM18.894 6.166a.75.75 0 00-1.06-1.06l-1.591 1.59a.75.75 0 101.06 1.061l1.591-1.59zM21.75 12a.75.75 0 01-.75.75h-2.25a.75.75 0 010-1.5H21a.75.75 0 01.75.75zM17.834 18.894a.75.75 0 001.06-1.06l-1.59-1.591a.75.75 0 10-1.061 1.06l1.59 1.591zM12 18a.75.75 0 01.75.75V21a.75.75 0 01-1.5 0v-2.25A.75.75 0 0112 18zM7.758 17.303a.75.75 0 00-1.061-1.06l-1.591 1.59a.75.75 0 001.06 1.061l1.591-1.59zM6 12a.75.75 0 01-.75.75H3a.75.75 0 010-1.5h2.25A.75.75 0 016 12zM6.697 7.757a.75.75 0 001.06-1.06l-1.59-1.591a.75.75 0 00-1.061 1.06l1.59 1.591z" />
-      </svg>
-      <div class="text-left">
-       <p class="text-sm">Cuaca Hari Ini</p>
-       <p class="font-bold text-lg">28°C - Cerah ☀️</p>
-      </div>
+     <div id="mobile-menu" class="hidden md:hidden mt-4 space-y-3 pb-2"><a href="#home" class="block py-2 text-gray-700 hover:text-purple-600 font-medium">Home</a> <a href="#about" class="block py-2 text-gray-700 hover:text-purple-600 font-medium">About</a> <a href="#skills" class="block py-2 text-gray-700 hover:text-purple-600 font-medium">Skills</a> <a href="#portfolio" class="block py-2 text-gray-700 hover:text-purple-600 font-medium">Portfolio</a> <a href="#contact" class="block py-2 text-gray-700 hover:text-purple-600 font-medium">Contact</a>
      </div>
-    </div>
-   </div><!-- Scroll Animation Indicator -->
-   <div class="absolute bottom-8 left-0 right-0 flex justify-center">
-    <svg class="w-6 h-6 animate-bounce" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
-    </svg>
-   </div>
-  </section><!-- Promo Banner -->
-  <section class="py-6 bg-gradient-to-r from-yellow-400 via-orange-500 to-red-500">
-   <div class="container mx-auto px-6">
-    <div class="flex flex-col md:flex-row items-center justify-between gap-4 text-white">
-     <div class="flex items-center gap-4">
-      <div class="bg-white text-orange-600 rounded-full p-3 animate-pulse">
-       <svg class="w-8 h-8" fill="currentColor" viewbox="0 0 24 24"><path d="M21 5v6.59l-3-3.01-4 4.01-4-4-4 4-3-3.01V5c0-1.1.9-2 2-2h14c1.1 0 2 .9 2 2zm-3 6.42l3 3.01V19c0 1.1-.9 2-2 2H5c-1.1 0-2-.9-2-2v-4.58l3 2.99 4-4 4 4 4-3.99z" />
-       </svg>
+    </nav>
+   </header><!-- Hero Section / Beranda -->
+   <section id="home" class="min-h-screen w-full flex items-center gradient-ocean pt-20">
+    <div class="max-w-7xl mx-auto px-6 w-full py-20">
+     <div class="grid md:grid-cols-2 gap-12 items-center">
+      <div class="text-white space-y-6 fade-in-up">
+       <p id="hero-greeting" class="text-xl opacity-90">Hai nama saya</p>
+       <h2 id="hero-name" class="text-6xl md:text-7xl font-bold leading-tight">Fabian</h2>
+       <p id="hero-description" class="text-xl opacity-90">siswa kelas 12 SMAN 1 Subang</p>
+       <p id="hero-hobby" class="text-lg opacity-80 flex items-center"><span class="mr-2">⚽</span> <span>bermain futsal</span></p>
+       <p id="tagline" class="text-lg opacity-80 italic">Web Developer Profesional</p><button id="cta-button" class="btn-gradient text-white px-8 py-4 rounded-full font-semibold text-lg mt-4 inline-block"> Lihat Portofolio </button>
       </div>
-      <div>
-       <p class="text-2xl font-bold">🎉 PROMO SPESIAL - Diskon 25%!</p>
-       <p class="text-sm opacity-90">Berlaku untuk pemesanan tiket Premium hingga akhir bulan ini</p>
-      </div>
-     </div><a href="#tickets" class="bg-white text-orange-600 px-8 py-3 rounded-full font-bold hover:bg-gray-100 transition transform hover:scale-110 shadow-xl whitespace-nowrap"> Ambil Promo </a>
-    </div>
-   </div>
-  </section><!-- Statistics Counter -->
-  <section class="py-16" style="background: var(--bg-secondary);">
-   <div class="container mx-auto px-6">
-    <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-     <div class="fade-in">
-      <div class="counter" id="counter-visitors">
-       0
-      </div>
-      <p class="text-gray-400 mt-2">Pengunjung/Tahun</p>
-     </div>
-     <div class="fade-in">
-      <div class="counter" id="counter-rating">
-       0
-      </div>
-      <p class="text-gray-400 mt-2">Rating ⭐</p>
-     </div>
-     <div class="fade-in">
-      <div class="counter" id="counter-facilities">
-       0
-      </div>
-      <p class="text-gray-400 mt-2">Fasilitas</p>
-     </div>
-     <div class="fade-in">
-      <div class="counter" id="counter-events">
-       0
-      </div>
-      <p class="text-gray-400 mt-2">Event/Bulan</p>
-     </div>
-    </div>
-   </div>
-  </section><!-- About Section -->
-  <section id="about" class="py-20" style="background: var(--bg-primary);">
-   <div class="container mx-auto px-6">
-    <h2 class="text-4xl font-bold text-center mb-12">Tentang Pantai Pondok Bali</h2>
-    <div class="grid md:grid-cols-2 gap-12 items-center">
-     <div>
-      <p class="text-lg mb-6 leading-relaxed">Pantai Pondok Bali adalah destinasi wisata alam yang menakjubkan, terletak di pesisir selatan Bali. Dengan pasir putih yang lembut, air laut yang jernih, dan pemandangan matahari terbenam yang spektakuler, pantai ini menawarkan pengalaman yang tak terlupakan bagi setiap pengunjung.</p>
-      <p class="text-lg mb-6 leading-relaxed">Dikelilingi oleh tebing-tebing karang yang indah dan vegetasi tropis yang rimbun, pantai ini adalah tempat sempurna untuk bersantai, berselancar, atau sekadar menikmati keindahan alam Indonesia.</p>
-      <div class="flex gap-4"><button class="bg-blue-500 text-white px-6 py-3 rounded-lg hover:bg-blue-600 transition">Pelajari Lebih Lanjut</button> <button class="border border-blue-500 text-blue-500 px-6 py-3 rounded-lg hover:bg-blue-500 hover:text-white transition">Download Brosur</button>
-      </div>
-     </div>
-     <div class="relative"><img src="https://jagoantravel.com/admin/gambar/pantai-pondok-bali-3.jpg" alt="Pantai Pondok Bali - Pemandangan Indah" class="w-full h-96 object-cover rounded-lg shadow-2xl transform hover:scale-105 transition duration-500" onerror="this.src='https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=800&amp;h=600&amp;fit=crop'; this.alt='Pantai Pondok Bali';">
-      <div class="absolute top-4 right-4 bg-yellow-400 text-gray-900 px-4 py-2 rounded-full font-bold animate-pulse">
-       ⭐ Rating 4.8/5
-      </div>
-     </div>
-    </div>
-   </div>
-  </section><!-- Gallery Section -->
-  <section id="gallery" class="py-20" style="background: var(--bg-secondary);">
-   <div class="container mx-auto px-6">
-    <h2 class="text-4xl font-bold text-center mb-4">Galeri Foto &amp; Video</h2>
-    <p class="text-center text-gray-400 mb-12">Jelajahi keindahan Pantai Pondok Bali melalui koleksi visual kami</p><!-- Filter Categories -->
-    <div class="flex flex-wrap justify-center gap-4 mb-12"><button class="filter-btn active px-6 py-2 rounded-full bg-blue-500 text-white hover:bg-blue-600 transition" data-filter="all">Semua</button> <button class="filter-btn px-6 py-2 rounded-full bg-gray-700 text-white hover:bg-blue-500 transition" data-filter="beach">Pantai</button> <button class="filter-btn px-6 py-2 rounded-full bg-gray-700 text-white hover:bg-blue-500 transition" data-filter="sunset">Sunset</button> <button class="filter-btn px-6 py-2 rounded-full bg-gray-700 text-white hover:bg-blue-500 transition" data-filter="activities">Aktivitas</button> <button class="filter-btn px-6 py-2 rounded-full bg-gray-700 text-white hover:bg-blue-500 transition" data-filter="facilities">Fasilitas</button>
-    </div>
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-     <div class="gallery-item relative h-64 rounded-lg overflow-hidden group cursor-pointer transform hover:scale-105 transition duration-500" data-category="beach"><img src="https://jagoantravel.com/admin/gambar/pantai-pondok-bali-3.jpg" alt="Pemandangan Pantai Pondok Bali" class="w-full h-full object-cover transition duration-500 group-hover:scale-110" onerror="this.src='https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=600&amp;h=400&amp;fit=crop';">
-      <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-60 group-hover:opacity-80 transition"></div>
-      <div class="absolute inset-0 flex items-end p-4">
-       <div class="transform translate-y-4 group-hover:translate-y-0 transition duration-300">
-        <p class="text-white font-bold text-lg mb-1">Pemandangan Pantai</p>
-        <p class="text-white text-sm opacity-0 group-hover:opacity-100 transition duration-500">📸 Pantai Pondok Bali yang menakjubkan</p>
-       </div>
-      </div>
-     </div>
-    </div><!-- Video Section -->
-    <div class="mt-16 text-center">
-     <h3 class="text-2xl font-bold mb-6">Video Promosi</h3>
-     <div class="max-w-3xl mx-auto bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg h-96 flex items-center justify-center cursor-pointer hover:opacity-90 transition" id="video-trigger">
-      <div class="text-center">
-       <svg class="w-24 h-24 mx-auto mb-4 text-white" fill="currentColor" viewbox="0 0 24 24"><path d="M8 5v14l11-7z" />
-       </svg>
-       <p class="text-xl font-semibold">Klik untuk Memutar Video</p>
-      </div>
-     </div>
-    </div>
-   </div>
-  </section><!-- Virtual Tour 360° -->
-  <section id="virtual-tour" class="py-20" style="background: var(--bg-primary);">
-   <div class="container mx-auto px-6">
-    <h2 class="text-4xl font-bold text-center mb-4">Virtual Tour 360°</h2>
-    <p class="text-center text-gray-400 mb-12">Jelajahi pantai dari kenyamanan rumah Anda</p>
-    <div class="max-w-4xl mx-auto bg-gradient-to-br from-cyan-500 to-blue-600 rounded-lg h-96 flex items-center justify-center">
-     <div class="text-center">
-      <svg class="w-32 h-32 mx-auto mb-4 text-white" fill="currentColor" viewbox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm0-12.5c-2.49 0-4.5 2.01-4.5 4.5s2.01 4.5 4.5 4.5 4.5-2.01 4.5-4.5-2.01-4.5-4.5-4.5zm0 5.5c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1z" />
-      </svg>
-      <p class="text-2xl font-semibold mb-2">Pengalaman 360°</p>
-      <p class="text-white text-opacity-80">Geser untuk melihat seluruh pantai</p>
-     </div>
-    </div>
-   </div>
-  </section><!-- Tickets Section -->
-  <section id="tickets" class="py-20" style="background: var(--bg-secondary);">
-   <div class="container mx-auto px-6">
-    <h2 class="text-4xl font-bold text-center mb-4">Tiket &amp; Jadwal Kunjungan</h2>
-    <p class="text-center text-gray-400 mb-12">Pilih paket yang sesuai dengan kebutuhan Anda</p>
-    <div class="grid md:grid-cols-3 gap-8 mb-12">
-     <div class="bg-gradient-to-br from-blue-500 to-blue-600 rounded-2xl p-8 text-center transform hover:scale-105 transition duration-500 shadow-2xl hover-glow">
-      <div class="w-20 h-20 bg-white bg-opacity-20 rounded-full flex items-center justify-center mx-auto mb-4">
-       <svg class="w-10 h-10" fill="currentColor" viewbox="0 0 24 24"><path d="M12 2L2 7v10c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-10-5z" />
-       </svg>
-      </div>
-      <h3 class="text-2xl font-bold mb-4">Tiket Reguler</h3>
-      <div class="mb-6"><span class="text-5xl font-bold">Rp 50K</span>
-       <p class="text-sm opacity-80 mt-2">/orang</p>
-      </div>
-      <ul class="text-left mb-8 space-y-3">
-       <li class="flex items-center gap-2"><span class="text-xl">✓</span> Akses pantai seharian</li>
-       <li class="flex items-center gap-2"><span class="text-xl">✓</span> Parkir kendaraan</li>
-       <li class="flex items-center gap-2"><span class="text-xl">✓</span> Toilet &amp; shower</li>
-       <li class="flex items-center gap-2"><span class="text-xl">✓</span> Area foto</li>
-      </ul><button class="w-full bg-white text-blue-600 py-3 rounded-xl font-semibold hover:bg-gray-100 transition transform hover:scale-105 shadow-lg">Pesan Sekarang</button>
-     </div>
-     <div class="bg-gradient-to-br from-purple-500 to-purple-600 rounded-2xl p-8 text-center transform md:scale-110 shadow-2xl relative z-10 border-4 border-yellow-400">
-      <div class="absolute -top-4 left-0 right-0 flex justify-center">
-       <div class="bg-yellow-400 text-purple-800 px-6 py-2 rounded-full font-bold text-sm shadow-lg animate-pulse">
-        ⭐ PALING POPULER ⭐
-       </div>
-      </div>
-      <div class="w-20 h-20 bg-white bg-opacity-20 rounded-full flex items-center justify-center mx-auto mb-4 mt-4">
-       <svg class="w-10 h-10" fill="currentColor" viewbox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-       </svg>
-      </div>
-      <h3 class="text-2xl font-bold mb-4">Tiket Premium</h3>
-      <div class="mb-6"><span class="text-5xl font-bold">Rp 150K</span>
-       <p class="text-sm opacity-80 mt-2">/orang</p>
-      </div>
-      <ul class="text-left mb-8 space-y-3">
-       <li class="flex items-center gap-2"><span class="text-xl">✓</span> Semua fasilitas reguler</li>
-       <li class="flex items-center gap-2"><span class="text-xl">✓</span> Perlengkapan snorkeling</li>
-       <li class="flex items-center gap-2"><span class="text-xl">✓</span> Voucher makan Rp 50K</li>
-       <li class="flex items-center gap-2"><span class="text-xl">✓</span> Gazebo pribadi</li>
-       <li class="flex items-center gap-2"><span class="text-xl">✓</span> Free wifi</li>
-      </ul><button class="w-full bg-white text-purple-600 py-3 rounded-xl font-semibold hover:bg-gray-100 transition transform hover:scale-105 shadow-lg">Pesan Sekarang</button>
-     </div>
-     <div class="bg-gradient-to-br from-orange-500 to-orange-600 rounded-2xl p-8 text-center transform hover:scale-105 transition duration-500 shadow-2xl hover-glow">
-      <div class="w-20 h-20 bg-white bg-opacity-20 rounded-full flex items-center justify-center mx-auto mb-4">
-       <svg class="w-10 h-10" fill="currentColor" viewbox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z" />
-       </svg>
-      </div>
-      <h3 class="text-2xl font-bold mb-4">Tiket VIP</h3>
-      <div class="mb-6"><span class="text-5xl font-bold">Rp 300K</span>
-       <p class="text-sm opacity-80 mt-2">/orang</p>
-      </div>
-      <ul class="text-left mb-8 space-y-3">
-       <li class="flex items-center gap-2"><span class="text-xl">✓</span> Semua fasilitas premium</li>
-       <li class="flex items-center gap-2"><span class="text-xl">✓</span> Private beach area</li>
-       <li class="flex items-center gap-2"><span class="text-xl">✓</span> BBQ party set</li>
-       <li class="flex items-center gap-2"><span class="text-xl">✓</span> Fotografer profesional</li>
-       <li class="flex items-center gap-2"><span class="text-xl">✓</span> Sunset dinner</li>
-      </ul><button class="w-full bg-white text-orange-600 py-3 rounded-xl font-semibold hover:bg-gray-100 transition transform hover:scale-105 shadow-lg">Pesan Sekarang</button>
-     </div>
-    </div><!-- Booking Form -->
-    <div class="max-w-2xl mx-auto glass-effect rounded-lg p-8">
-     <h3 class="text-2xl font-bold mb-6 text-center">Form Pemesanan Tiket</h3>
-     <form id="booking-form" class="space-y-4">
-      <div class="grid md:grid-cols-2 gap-4">
-       <div><label class="block mb-2 font-semibold">Nama Lengkap</label> <input type="text" id="booking-name" required class="w-full px-4 py-2 rounded-lg bg-gray-700 border border-gray-600 focus:border-blue-500 outline-none">
-       </div>
-       <div><label class="block mb-2 font-semibold">Email</label> <input type="email" id="booking-email" required class="w-full px-4 py-2 rounded-lg bg-gray-700 border border-gray-600 focus:border-blue-500 outline-none">
-       </div>
-      </div>
-      <div class="grid md:grid-cols-2 gap-4">
-       <div><label class="block mb-2 font-semibold">Nomor Telepon</label> <input type="tel" id="booking-phone" required class="w-full px-4 py-2 rounded-lg bg-gray-700 border border-gray-600 focus:border-blue-500 outline-none">
-       </div>
-       <div><label class="block mb-2 font-semibold">Tanggal Kunjungan</label> <input type="date" id="booking-date" required class="w-full px-4 py-2 rounded-lg bg-gray-700 border border-gray-600 focus:border-blue-500 outline-none">
-       </div>
-      </div>
-      <div class="grid md:grid-cols-2 gap-4">
-       <div><label class="block mb-2 font-semibold">Jenis Tiket</label> <select id="booking-ticket-type" required class="w-full px-4 py-2 rounded-lg bg-gray-700 border border-gray-600 focus:border-blue-500 outline-none"> <option value="">Pilih Tiket</option> <option value="regular">Reguler - Rp 50K</option> <option value="premium">Premium - Rp 150K</option> <option value="vip">VIP - Rp 300K</option> </select>
-       </div>
-       <div><label class="block mb-2 font-semibold">Jumlah Pengunjung</label> <input type="number" id="booking-visitors" min="1" required class="w-full px-4 py-2 rounded-lg bg-gray-700 border border-gray-600 focus:border-blue-500 outline-none">
-       </div>
-      </div><button type="submit" class="w-full bg-blue-500 text-white py-3 rounded-lg font-semibold hover:bg-blue-600 transition"> <span id="booking-btn-text">Kirim Pemesanan</span> <span id="booking-loading" class="hidden">Memproses...</span> </button>
-      <div id="booking-success" class="hidden bg-green-500 text-white p-4 rounded-lg text-center">
-       ✓ Pemesanan berhasil! Kami akan menghubungi Anda segera.
-      </div>
-     </form>
-    </div>
-   </div>
-  </section><!-- Facilities Section -->
-  <section id="facilities" class="py-20" style="background: var(--bg-primary);">
-   <div class="container mx-auto px-6">
-    <h2 class="text-4xl font-bold text-center mb-4">Fasilitas &amp; Layanan</h2>
-    <p class="text-center text-gray-400 mb-12">Kenyamanan Anda adalah prioritas kami</p>
-    <div class="grid md:grid-cols-3 gap-8">
-     <div class="glass-effect rounded-lg p-6 text-center hover:scale-105 transition">
-      <div class="w-16 h-16 bg-blue-500 rounded-full flex items-center justify-center mx-auto mb-4">
-       <svg class="w-8 h-8" fill="currentColor" viewbox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
-       </svg>
-      </div>
-      <h3 class="text-xl font-bold mb-2">Kamar Ganti &amp; Shower</h3>
-      <p class="text-gray-400">Fasilitas bersih dan nyaman untuk berganti pakaian</p>
-     </div>
-     <div class="glass-effect rounded-lg p-6 text-center hover:scale-105 transition">
-      <div class="w-16 h-16 bg-green-500 rounded-full flex items-center justify-center mx-auto mb-4">
-       <svg class="w-8 h-8" fill="currentColor" viewbox="0 0 24 24"><path d="M11 9H9V2H7v7H5V2H3v7c0 2.12 1.66 3.84 3.75 3.97V22h2.5v-9.03C11.34 12.84 13 11.12 13 9V2h-2v7zm5-3v8h2.5v8H21V2c-2.76 0-5 2.24-5 4z" />
-       </svg>
-      </div>
-      <h3 class="text-xl font-bold mb-2">Restoran &amp; Kafe</h3>
-      <p class="text-gray-400">Berbagai pilihan kuliner lokal dan internasional</p>
-     </div>
-     <div class="glass-effect rounded-lg p-6 text-center hover:scale-105 transition">
-      <div class="w-16 h-16 bg-purple-500 rounded-full flex items-center justify-center mx-auto mb-4">
-       <svg class="w-8 h-8" fill="currentColor" viewbox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" />
-       </svg>
-      </div>
-      <h3 class="text-xl font-bold mb-2">Area Parkir Luas</h3>
-      <p class="text-gray-400">Parkir aman untuk mobil dan motor dengan kapasitas besar</p>
-     </div>
-     <div class="glass-effect rounded-lg p-6 text-center hover:scale-105 transition">
-      <div class="w-16 h-16 bg-yellow-500 rounded-full flex items-center justify-center mx-auto mb-4">
-       <svg class="w-8 h-8" fill="currentColor" viewbox="0 0 24 24"><path d="M20 6h-2.18c.11-.31.18-.65.18-1 0-1.66-1.34-3-3-3-1.05 0-1.96.54-2.5 1.35l-.5.67-.5-.68C10.96 2.54 10.05 2 9 2 7.34 2 6 3.34 6 5c0 .35.07.69.18 1H4c-1.11 0-1.99.89-1.99 2L2 19c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V8c0-1.11-.89-2-2-2zm-5-2c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zM9 4c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zm11 15H4v-2h16v2zm0-5H4V8h5.08L7 10.83 8.62 12 11 8.76l1-1.36 1 1.36L15.38 12 17 10.83 14.92 8H20v6z" />
-       </svg>
-      </div>
-      <h3 class="text-xl font-bold mb-2">Toko Suvenir</h3>
-      <p class="text-gray-400">Berbagai cinderamata khas Bali untuk kenang-kenangan</p>
-     </div>
-     <div class="glass-effect rounded-lg p-6 text-center hover:scale-105 transition">
-      <div class="w-16 h-16 bg-red-500 rounded-full flex items-center justify-center mx-auto mb-4">
-       <svg class="w-8 h-8" fill="currentColor" viewbox="0 0 24 24"><path d="M19.43 12.98c.04-.32.07-.64.07-.98s-.03-.66-.07-.98l2.11-1.65c.19-.15.24-.42.12-.64l-2-3.46c-.12-.22-.39-.3-.61-.22l-2.49 1c-.52-.4-1.08-.73-1.69-.98l-.38-2.65C14.46 2.18 14.25 2 14 2h-4c-.25 0-.46.18-.49.42l-.38 2.65c-.61.25-1.17.59-1.69.98l-2.49-1c-.23-.09-.49 0-.61.22l-2 3.46c-.13.22-.07.49.12.64l2.11 1.65c-.04.32-.07.65-.07.98s.03.66.07.98l-2.11 1.65c-.19.15-.24.42-.12.64l2 3.46c.12.22.39.3.61.22l2.49-1c.52.4 1.08.73 1.69.98l.38 2.65c.03.24.24.42.49.42h4c.25 0 .46-.18.49-.42l.38-2.65c.61-.25 1.17-.59 1.69-.98l2.49 1c.23.09.49 0 .61-.22l2-3.46c.12-.22.07-.49-.12-.64l-2.11-1.65zM12 15.5c-1.93 0-3.5-1.57-3.5-3.5s1.57-3.5 3.5-3.5 3.5 1.57 3.5 3.5-1.57 3.5-3.5 3.5z" />
-       </svg>
-      </div>
-      <h3 class="text-xl font-bold mb-2">Penyewaan Peralatan</h3>
-      <p class="text-gray-400">Sewa peralatan surfing, snorkeling, dan olahraga air</p>
-     </div>
-     <div class="glass-effect rounded-lg p-6 text-center hover:scale-105 transition">
-      <div class="w-16 h-16 bg-indigo-500 rounded-full flex items-center justify-center mx-auto mb-4">
-       <svg class="w-8 h-8" fill="currentColor" viewbox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
-       </svg>
-      </div>
-      <h3 class="text-xl font-bold mb-2">Area Gazebo</h3>
-      <p class="text-gray-400">Tempat bersantai dengan pemandangan pantai</p>
-     </div>
-    </div>
-   </div>
-  </section><!-- Events Section -->
-  <section id="events" class="py-20" style="background: var(--bg-secondary);">
-   <div class="container mx-auto px-6">
-    <h2 class="text-4xl font-bold text-center mb-4">Event &amp; Kegiatan</h2>
-    <p class="text-center text-gray-400 mb-12">Jangan lewatkan acara menarik di Pantai Pondok Bali</p>
-    <div class="grid md:grid-cols-2 gap-8">
-     <div class="glass-effect rounded-lg overflow-hidden"><img src="https://images.unsplash.com/photo-1459749411175-04bf5292ceea?w=600&amp;h=300&amp;fit=crop" alt="Festival Musik Pantai" class="h-48 w-full object-cover" onerror="this.src=''; this.alt='Gambar tidak dapat dimuat'; this.style.background='linear-gradient(135deg, #fb923c 0%, #ef4444 100%)';">
-     </div>
-     <div class="p-6">
-      <div class="text-sm text-blue-400 mb-2">
-       15-17 Februari 2024
-      </div>
-      <h3 class="text-2xl font-bold mb-3">Festival Musik Pantai</h3>
-      <p class="text-gray-400 mb-4">Nikmati pertunjukan musik live dari artis lokal dan internasional dengan latar sunset yang memukau.</p><button class="bg-blue-500 text-white px-6 py-2 rounded-lg hover:bg-blue-600 transition">Info Lengkap</button>
-     </div>
-    </div>
-    <div class="glass-effect rounded-lg overflow-hidden"><img src="https://images.unsplash.com/photo-1502933691298-84fc14542831?w=600&amp;h=300&amp;fit=crop" alt="Kompetisi Surfing" class="h-48 w-full object-cover" onerror="this.src=''; this.alt='Gambar tidak dapat dimuat'; this.style.background='linear-gradient(135deg, #4ade80 0%, #14b8a6 100%)';">
-    </div>
-    <div class="p-6">
-     <div class="text-sm text-blue-400 mb-2">
-      1-5 Maret 2024
-     </div>
-     <h3 class="text-2xl font-bold mb-3">Kompetisi Surfing Internasional</h3>
-     <p class="text-gray-400 mb-4">Saksikan para surfer profesional dari berbagai negara berkompetisi di ombak Pantai Pondok Bali.</p><button class="bg-blue-500 text-white px-6 py-2 rounded-lg hover:bg-blue-600 transition">Info Lengkap</button>
-    </div>
-   </div>
-   <div class="glass-effect rounded-lg overflow-hidden"><img src="https://images.unsplash.com/photo-1618477461853-cf6ed80faba5?w=600&amp;h=300&amp;fit=crop" alt="Aksi Bersih Pantai" class="h-48 w-full object-cover" onerror="this.src=''; this.alt='Gambar tidak dapat dimuat'; this.style.background='linear-gradient(135deg, #a78bfa 0%, #ec4899 100%)';">
-   </div>
-   <div class="p-6">
-    <div class="text-sm text-blue-400 mb-2">
-     20 Maret 2024
-    </div>
-    <h3 class="text-2xl font-bold mb-3">Aksi Bersih Pantai</h3>
-    <p class="text-gray-400 mb-4">Bergabunglah dalam gerakan menjaga kebersihan pantai bersama komunitas lokal dan wisatawan.</p><button class="bg-blue-500 text-white px-6 py-2 rounded-lg hover:bg-blue-600 transition">Info Lengkap</button>
-   </div>
-   <div class="glass-effect rounded-lg overflow-hidden"><img src="https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=600&amp;h=300&amp;fit=crop" alt="Yoga Sunrise" class="h-48 w-full object-cover" onerror="this.src=''; this.alt='Gambar tidak dapat dimuat'; this.style.background='linear-gradient(135deg, #fbbf24 0%, #f97316 100%)';">
-   </div>
-   <div class="p-6">
-    <div class="text-sm text-blue-400 mb-2">
-     Setiap Akhir Pekan
-    </div>
-    <h3 class="text-2xl font-bold mb-3">Yoga Sunrise di Pantai</h3>
-    <p class="text-gray-400 mb-4">Mulai hari Anda dengan sesi yoga pagi di tepi pantai yang menenangkan, dipandu oleh instruktur berpengalaman.</p><button class="bg-blue-500 text-white px-6 py-2 rounded-lg hover:bg-blue-600 transition">Info Lengkap</button>
-   </div>
-  </section><!-- Testimonials Section -->
-  <section id="testimonials" class="py-20" style="background: var(--bg-primary);">
-   <div class="container mx-auto px-6">
-    <h2 class="text-4xl font-bold text-center mb-4">Ulasan Pengunjung</h2>
-    <p class="text-center text-gray-400 mb-12">Apa kata mereka tentang pengalaman di Pantai Pondok Bali</p><!-- Testimonial Carousel -->
-    <div class="max-w-4xl mx-auto mb-12">
-     <div id="testimonial-carousel" class="glass-effect rounded-lg p-8">
-      <div class="text-center">
-       <div class="star-rating text-3xl mb-4">
-        ★★★★★
-       </div>
-       <p class="text-xl italic mb-6">"Pantai yang sangat indah! Pasir putihnya bersih dan airnya jernih. Fasilitas lengkap dan pelayanannya ramah. Pasti akan kembali lagi!"</p>
-       <div class="flex items-center justify-center gap-4">
-        <div class="w-12 h-12 bg-gradient-to-br from-blue-400 to-purple-500 rounded-full flex items-center justify-center"><span class="text-xl font-bold">AS</span>
+      <div class="flex justify-center items-center fade-in-up" style="animation-delay: 0.2s;">
+       <div class="relative">
+        <div class="w-80 h-80 rounded-full bg-gradient-accent opacity-20 absolute blur-3xl"></div>
+        <div class="w-80 h-80 rounded-full border-4 border-white/20 flex items-center justify-center relative float-animation">
+         <svg class="w-48 h-48 text-white" fill="currentColor" viewbox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z" />
+         </svg>
         </div>
-        <div class="text-left">
-         <div class="font-bold">
-          Ani Susanti
+       </div>
+      </div>
+     </div>
+    </div>
+   </section><!-- About Section / Tentang Saya -->
+   <section id="about" class="py-24 bg-white w-full">
+    <div class="max-w-7xl mx-auto px-6">
+     <h2 id="about-title" class="text-5xl font-bold text-center mb-16 gradient-text section-reveal">Tentang Saya</h2>
+     <div class="grid md:grid-cols-2 gap-8 mb-8">
+      <div class="card-white bg-gradient-to-br from-blue-50 to-purple-50 p-8 rounded-3xl section-reveal">
+       <div class="flex items-center mb-4"><span class="text-4xl mr-4">👤</span>
+        <h3 class="text-2xl font-bold text-gray-800">Profil Singkat</h3>
+       </div>
+       <p class="text-gray-700 leading-relaxed">Saya adalah Fabian Hernawan, lahir pada 26 April 2007. Hobi saya bermain futsal dan mendengarkan musik. Saya merupakan anak kelima dari lima bersaudara.</p>
+      </div>
+      <div class="card-white bg-gradient-to-br from-purple-50 to-pink-50 p-8 rounded-3xl section-reveal" style="transition-delay: 0.1s;">
+       <div class="flex items-center mb-4"><span class="text-4xl mr-4">🎯</span>
+        <h3 class="text-2xl font-bold text-gray-800">Tujuan</h3>
+       </div>
+       <p class="text-gray-700 leading-relaxed text-xl font-semibold">Jadi orang kaya dan sholeh</p>
+      </div>
+     </div>
+     <div class="grid md:grid-cols-2 gap-8">
+      <div class="card-white bg-gradient-to-br from-indigo-50 to-blue-50 p-8 rounded-3xl section-reveal" style="transition-delay: 0.2s;">
+       <div class="flex items-center mb-4"><span class="text-4xl mr-4">💡</span>
+        <h3 class="text-2xl font-bold text-gray-800">Minat</h3>
+       </div>
+       <div class="space-y-3">
+        <div class="flex items-center text-gray-700"><span class="mr-3 text-2xl">⛏️</span> <span class="text-lg">Dunia Pertambangan</span>
+        </div>
+        <div class="flex items-center text-gray-700"><span class="mr-3 text-2xl">🎖️</span> <span class="text-lg">Militer</span>
+        </div>
+       </div>
+      </div>
+      <div class="card-white bg-gradient-to-br from-pink-50 to-purple-50 p-8 rounded-3xl section-reveal" style="transition-delay: 0.3s;">
+       <div class="flex items-center mb-4"><span class="text-4xl mr-4">⭐</span>
+        <h3 class="text-2xl font-bold text-gray-800">Nilai Pribadi</h3>
+       </div>
+       <div class="flex flex-wrap gap-3"><span class="bg-purple-200 text-purple-800 px-5 py-2 rounded-full font-semibold">Baik</span> <span class="bg-blue-200 text-blue-800 px-5 py-2 rounded-full font-semibold">Murah Hati</span> <span class="bg-pink-200 text-pink-800 px-5 py-2 rounded-full font-semibold">Suka Menolong</span>
+       </div>
+      </div>
+     </div>
+    </div>
+   </section><!-- Skills Section / Keahlian -->
+   <section id="skills" class="py-24 bg-gradient-to-br from-gray-50 to-blue-50 w-full">
+    <div class="max-w-7xl mx-auto px-6">
+     <h2 id="skills-title" class="text-5xl font-bold text-center mb-16 gradient-text section-reveal">Keahlian</h2>
+     <div class="grid md:grid-cols-2 gap-10"><!-- Hard Skills -->
+      <div class="card-white bg-white p-10 rounded-3xl shadow-xl section-reveal">
+       <div class="flex items-center mb-8"><span class="text-5xl mr-4">💪</span>
+        <h3 class="text-3xl font-bold text-gray-800">Hard Skills</h3>
+       </div>
+       <div class="space-y-8">
+        <div>
+         <div class="flex justify-between items-center mb-3"><span class="font-semibold text-gray-700 text-lg">Berpikir Kritis</span> <span class="text-purple-600 font-bold text-lg">90%</span>
          </div>
-         <div class="text-sm text-gray-400">
-          Jakarta, Indonesia
+         <div class="bg-gray-200 rounded-full h-4 overflow-hidden">
+          <div class="skill-bar bg-gradient-accent h-full rounded-full" style="width: 0%" data-width="90%"></div>
+         </div>
+        </div>
+        <div>
+         <div class="flex justify-between items-center mb-3"><span class="font-semibold text-gray-700 text-lg">Mampu Bekerja</span> <span class="text-purple-600 font-bold text-lg">88%</span>
+         </div>
+         <div class="bg-gray-200 rounded-full h-4 overflow-hidden">
+          <div class="skill-bar bg-gradient-accent h-full rounded-full" style="width: 0%" data-width="88%"></div>
+         </div>
+        </div>
+       </div>
+      </div><!-- Soft Skills -->
+      <div class="card-white bg-white p-10 rounded-3xl shadow-xl section-reveal" style="transition-delay: 0.1s;">
+       <div class="flex items-center mb-8"><span class="text-5xl mr-4">✨</span>
+        <h3 class="text-3xl font-bold text-gray-800">Soft Skills</h3>
+       </div>
+       <div class="space-y-8">
+        <div>
+         <div class="flex justify-between items-center mb-3"><span class="font-semibold text-gray-700 text-lg">Komunikasi</span> <span class="text-purple-600 font-bold text-lg">89%</span>
+         </div>
+         <div class="bg-gray-200 rounded-full h-4 overflow-hidden">
+          <div class="skill-bar bg-gradient-accent h-full rounded-full" style="width: 0%" data-width="89%"></div>
+         </div>
+        </div>
+        <div>
+         <div class="flex justify-between items-center mb-3"><span class="font-semibold text-gray-700 text-lg">Kerja Tim</span> <span class="text-purple-600 font-bold text-lg">92%</span>
+         </div>
+         <div class="bg-gray-200 rounded-full h-4 overflow-hidden">
+          <div class="skill-bar bg-gradient-accent h-full rounded-full" style="width: 0%" data-width="92%"></div>
+         </div>
+        </div>
+        <div>
+         <div class="flex justify-between items-center mb-3"><span class="font-semibold text-gray-700 text-lg">Kreativitas</span> <span class="text-purple-600 font-bold text-lg">87%</span>
+         </div>
+         <div class="bg-gray-200 rounded-full h-4 overflow-hidden">
+          <div class="skill-bar bg-gradient-accent h-full rounded-full" style="width: 0%" data-width="87%"></div>
          </div>
         </div>
        </div>
       </div>
      </div>
-     <div class="flex justify-center gap-2 mt-6"><button class="carousel-dot w-3 h-3 bg-blue-500 rounded-full"></button> <button class="carousel-dot w-3 h-3 bg-gray-600 rounded-full"></button> <button class="carousel-dot w-3 h-3 bg-gray-600 rounded-full"></button>
-     </div>
-    </div><!-- Review Form -->
-    <div class="max-w-2xl mx-auto glass-effect rounded-lg p-8">
-     <h3 class="text-2xl font-bold mb-6 text-center">Berikan Ulasan Anda</h3>
-     <form id="review-form" class="space-y-4">
-      <div class="grid md:grid-cols-2 gap-4">
-       <div><label class="block mb-2 font-semibold">Nama</label> <input type="text" id="review-name" required class="w-full px-4 py-2 rounded-lg bg-gray-700 border border-gray-600 focus:border-blue-500 outline-none">
-       </div>
-       <div><label class="block mb-2 font-semibold">Email</label> <input type="email" id="review-email" required class="w-full px-4 py-2 rounded-lg bg-gray-700 border border-gray-600 focus:border-blue-500 outline-none">
-       </div>
-      </div>
-      <div><label class="block mb-2 font-semibold">Rating</label>
-       <div class="flex gap-2" id="rating-stars"><button type="button" class="rating-star text-4xl text-gray-600 hover:text-yellow-400 transition" data-rating="1">★</button> <button type="button" class="rating-star text-4xl text-gray-600 hover:text-yellow-400 transition" data-rating="2">★</button> <button type="button" class="rating-star text-4xl text-gray-600 hover:text-yellow-400 transition" data-rating="3">★</button> <button type="button" class="rating-star text-4xl text-gray-600 hover:text-yellow-400 transition" data-rating="4">★</button> <button type="button" class="rating-star text-4xl text-gray-600 hover:text-yellow-400 transition" data-rating="5">★</button>
-       </div><input type="hidden" id="review-rating" required>
-      </div>
-      <div><label class="block mb-2 font-semibold">Ulasan</label> <textarea id="review-message" rows="4" required class="w-full px-4 py-2 rounded-lg bg-gray-700 border border-gray-600 focus:border-blue-500 outline-none"></textarea>
-      </div><button type="submit" class="w-full bg-blue-500 text-white py-3 rounded-lg font-semibold hover:bg-blue-600 transition"> <span id="review-btn-text">Kirim Ulasan</span> <span id="review-loading" class="hidden">Memproses...</span> </button>
-      <div id="review-success" class="hidden bg-green-500 text-white p-4 rounded-lg text-center">
-       ✓ Terima kasih atas ulasan Anda!
-      </div>
-     </form>
     </div>
-   </div>
-  </section><!-- Blog Section -->
-  <section id="blog" class="py-20" style="background: var(--bg-secondary);">
-   <div class="container mx-auto px-6">
-    <h2 class="text-4xl font-bold text-center mb-4">Artikel &amp; Blog Wisata</h2>
-    <p class="text-center text-gray-400 mb-12">Tips dan informasi menarik seputar wisata Pantai Pondok Bali</p>
-    <div class="grid md:grid-cols-3 gap-8">
-     <article class="glass-effect rounded-lg overflow-hidden hover:scale-105 transition"><img src="https://images.unsplash.com/photo-1452587925148-ce544e77e70d?w=600&amp;h=300&amp;fit=crop" alt="Tips Fotografi Pantai" class="h-48 w-full object-cover" onerror="this.src=''; this.alt='Gambar tidak dapat dimuat'; this.style.background='linear-gradient(135deg, #06b6d4 0%, #3b82f6 100%)';">
-      <div class="p-6">
-       <div class="text-sm text-blue-400 mb-2">
-        5 Januari 2024
+   </section><!-- Portfolio / Pengalaman & Prestasi -->
+   <section id="portfolio" class="py-24 bg-white w-full">
+    <div class="max-w-7xl mx-auto px-6">
+     <h2 id="portfolio-title" class="text-5xl font-bold text-center mb-16 gradient-text section-reveal">Portofolio &amp; Pengalaman</h2>
+     <div class="grid md:grid-cols-3 gap-8 mb-12">
+      <div class="card-white bg-gradient-to-br from-blue-50 to-indigo-50 p-8 rounded-3xl shadow-lg section-reveal">
+       <div class="text-5xl mb-5">
+        🎓
        </div>
-       <h3 class="text-xl font-bold mb-3">10 Tips Fotografi Pantai untuk Pemula</h3>
-       <p class="text-gray-400 mb-4">Pelajari teknik dasar fotografi pantai untuk mengabadikan momen indah di Pantai Pondok Bali.</p><a href="#" class="text-blue-400 hover:text-blue-300 font-semibold">Baca Selengkapnya →</a>
+       <h3 class="text-2xl font-bold mb-4 text-gray-800">Pendidikan</h3>
+       <p class="text-gray-700 leading-relaxed">Siswa Kelas 12 SMAN 1 Subang</p>
       </div>
-     </article>
-     <article class="glass-effect rounded-lg overflow-hidden hover:scale-105 transition"><img src="https://images.unsplash.com/photo-1473496169904-658ba7c44d8a?w=600&amp;h=300&amp;fit=crop" alt="Waktu Terbaik Mengunjungi" class="h-48 w-full object-cover" onerror="this.src=''; this.alt='Gambar tidak dapat dimuat'; this.style.background='linear-gradient(135deg, #4ade80 0%, #14b8a6 100%)';">
-      <div class="p-6">
-       <div class="text-sm text-blue-400 mb-2">
-        12 Januari 2024
+      <div class="card-white bg-gradient-to-br from-purple-50 to-pink-50 p-8 rounded-3xl shadow-lg section-reveal" style="transition-delay: 0.1s;">
+       <div class="text-5xl mb-5">
+        🤝
        </div>
-       <h3 class="text-xl font-bold mb-3">Waktu Terbaik Mengunjungi Pantai Pondok Bali</h3>
-       <p class="text-gray-400 mb-4">Temukan waktu ideal untuk berkunjung berdasarkan cuaca, musim, dan aktivitas yang tersedia.</p><a href="#" class="text-blue-400 hover:text-blue-300 font-semibold">Baca Selengkapnya →</a>
+       <h3 class="text-2xl font-bold mb-4 text-gray-800">Organisasi</h3>
+       <ul class="text-gray-700 space-y-2 leading-relaxed">
+        <li>• Anggota Karang Taruna sebagai Humas</li>
+        <li>• Wakil Ketua Ekstrakurikuler Futsal SMP Muhammadiyah Subang</li>
+       </ul>
       </div>
-     </article>
-     <article class="glass-effect rounded-lg overflow-hidden hover:scale-105 transition"><img src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=600&amp;h=300&amp;fit=crop" alt="Kuliner Khas Bali" class="h-48 w-full object-cover" onerror="this.src=''; this.alt='Gambar tidak dapat dimuat'; this.style.background='linear-gradient(135deg, #fb923c 0%, #ec4899 100%)';">
-      <div class="p-6">
-       <div class="text-sm text-blue-400 mb-2">
-        18 Januari 2024
+      <div class="card-white bg-gradient-to-br from-pink-50 to-red-50 p-8 rounded-3xl shadow-lg section-reveal" style="transition-delay: 0.2s;">
+       <div class="text-5xl mb-5">
+        ⚽
        </div>
-       <h3 class="text-xl font-bold mb-3">Kuliner Khas yang Wajib Dicoba</h3>
-       <p class="text-gray-400 mb-4">Eksplorasi cita rasa kuliner lokal Bali yang tersedia di area Pantai Pondok Bali.</p><a href="#" class="text-blue-400 hover:text-blue-300 font-semibold">Baca Selengkapnya →</a>
+       <h3 class="text-2xl font-bold mb-4 text-gray-800">Hobi &amp; Aktivitas</h3>
+       <ul class="text-gray-700 space-y-2 leading-relaxed">
+        <li>• Bermain Futsal</li>
+        <li>• Mendengarkan Musik</li>
+       </ul>
       </div>
-     </article>
-    </div>
-   </div>
-  </section><!-- Map Section -->
-  <section class="py-20" style="background: var(--bg-primary);">
-   <div class="container mx-auto px-6">
-    <h2 class="text-4xl font-bold text-center mb-4">Lokasi Kami</h2>
-    <p class="text-center text-gray-400 mb-12">Temukan kami di peta dan rencanakan kunjungan Anda</p>
-    <div class="max-w-4xl mx-auto">
-     <div class="glass-effect rounded-lg p-4 overflow-hidden"><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3960.7976665397614!2d107.76656861477322!3d-6.206604895493584!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e695b92bf77a2ab%3A0x1a5d663dbccf5c61!2sPantai%20Pondok%20Bali!5e0!3m2!1sen!2sid!4v1234567890" width="100%" height="450" style="border:0; border-radius: 0.5rem;" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-     </div>
-     <div class="mt-6 grid md:grid-cols-3 gap-4 text-center">
-      <div class="glass-effect rounded-lg p-4 hover:scale-105 transition">
-       <svg class="w-12 h-12 mx-auto mb-2 text-blue-400" fill="currentColor" viewbox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
-       </svg>
-       <p class="text-gray-400 mb-1">Koordinat</p>
-       <p class="font-semibold">-6.2066, 107.7769</p>
-      </div>
-      <div class="glass-effect rounded-lg p-4 hover:scale-105 transition">
-       <svg class="w-12 h-12 mx-auto mb-2 text-green-400" fill="currentColor" viewbox="0 0 24 24"><path d="M18.92 6.01C18.72 5.42 18.16 5 17.5 5h-11c-.66 0-1.21.42-1.42 1.01L3 12v8c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h12v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-8l-2.08-5.99zM6.5 16c-.83 0-1.5-.67-1.5-1.5S5.67 13 6.5 13s1.5.67 1.5 1.5S7.33 16 6.5 16zm11 0c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zM5 11l1.5-4.5h11L19 11H5z" />
-       </svg>
-       <p class="text-gray-400 mb-1">Jarak dari Karawang</p>
-       <p class="font-semibold">15 km (20 menit)</p>
-      </div>
-      <div class="glass-effect rounded-lg p-4 hover:scale-105 transition">
-       <svg class="w-12 h-12 mx-auto mb-2 text-purple-400" fill="currentColor" viewbox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" />
-       </svg>
-       <p class="text-gray-400 mb-1">Akses</p>
-       <p class="font-semibold">Mobil &amp; Motor</p>
-      </div>
-     </div>
-     <div class="mt-6 text-center"><a href="https://www.google.com/maps/place/Pantai+Pondok+Bali/@-6.2065833,107.7665686,15z" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 bg-blue-500 text-white px-8 py-3 rounded-full font-semibold hover:bg-blue-600 transition transform hover:scale-105">
-       <svg class="w-6 h-6" fill="currentColor" viewbox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
-       </svg> Buka di Google Maps </a>
-     </div>
-    </div>
-   </div>
-  </section><!-- Contact Section -->
-  <section id="contact" class="py-20" style="background: var(--bg-secondary);">
-   <div class="container mx-auto px-6">
-    <h2 class="text-4xl font-bold text-center mb-4">Hubungi Kami</h2>
-    <p class="text-center text-gray-400 mb-12">Ada pertanyaan? Kami siap membantu Anda</p>
-    <div class="grid md:grid-cols-2 gap-12 max-w-5xl mx-auto">
-     <div>
-      <h3 class="text-2xl font-bold mb-6">Informasi Kontak</h3>
-      <div class="space-y-6">
-       <div class="flex items-start gap-4">
-        <div class="w-12 h-12 bg-blue-500 rounded-full flex items-center justify-center flex-shrink-0">
-         <svg class="w-6 h-6" fill="currentColor" viewbox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
-         </svg>
+     </div><!-- Proyek/Karya Section -->
+     <div class="mt-16">
+      <h3 class="text-3xl font-bold text-center mb-10 text-gray-800 section-reveal">Proyek &amp; Karya</h3>
+      <div class="grid md:grid-cols-2 gap-8">
+       <div class="card-white bg-white p-8 rounded-3xl shadow-lg border-2 border-purple-100 section-reveal">
+        <div class="bg-gradient-accent h-48 rounded-2xl mb-6 flex items-center justify-center"><span class="text-white text-6xl">📊</span>
         </div>
-        <div>
-         <h4 class="font-semibold mb-1">Alamat</h4>
-         <p class="text-gray-400">Jl. Pantai Selatan No. 123<br>
-          Badung, Bali 80361, Indonesia</p>
+        <h4 class="text-2xl font-bold mb-3 text-gray-800">Leadership &amp; Organization</h4>
+        <p class="text-gray-600 mb-4 leading-relaxed">Pengalaman memimpin sebagai Wakil Ketua Ekstrakurikuler Futsal dan Humas Karang Taruna, menunjukkan kemampuan kepemimpinan dan organisasi yang kuat.</p>
+        <div class="flex flex-wrap gap-2"><span class="bg-purple-100 text-purple-700 px-3 py-1 rounded-full text-sm font-medium">Leadership</span> <span class="bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-sm font-medium">Teamwork</span> <span class="bg-pink-100 text-pink-700 px-3 py-1 rounded-full text-sm font-medium">Communication</span>
         </div>
        </div>
-       <div class="flex items-start gap-4">
-        <div class="w-12 h-12 bg-green-500 rounded-full flex items-center justify-center flex-shrink-0">
-         <svg class="w-6 h-6" fill="currentColor" viewbox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z" />
-         </svg>
+       <div class="card-white bg-white p-8 rounded-3xl shadow-lg border-2 border-blue-100 section-reveal" style="transition-delay: 0.1s;">
+        <div class="bg-gradient-to-br from-blue-400 to-indigo-500 h-48 rounded-2xl mb-6 flex items-center justify-center"><span class="text-white text-6xl">🎯</span>
         </div>
-        <div>
-         <h4 class="font-semibold mb-1">Telepon</h4>
-         <p class="text-gray-400" id="contact-phone-display">+62 361 123456</p>
+        <h4 class="text-2xl font-bold mb-3 text-gray-800">Personal Development</h4>
+        <p class="text-gray-600 mb-4 leading-relaxed">Fokus pada pengembangan diri dengan minat di bidang pertambangan dan militer, menunjukkan dedikasi terhadap pembelajaran dan pertumbuhan profesional.</p>
+        <div class="flex flex-wrap gap-2"><span class="bg-indigo-100 text-indigo-700 px-3 py-1 rounded-full text-sm font-medium">Critical Thinking</span> <span class="bg-cyan-100 text-cyan-700 px-3 py-1 rounded-full text-sm font-medium">Dedication</span> <span class="bg-teal-100 text-teal-700 px-3 py-1 rounded-full text-sm font-medium">Discipline</span>
         </div>
-       </div>
-       <div class="flex items-start gap-4">
-        <div class="w-12 h-12 bg-purple-500 rounded-full flex items-center justify-center flex-shrink-0">
-         <svg class="w-6 h-6" fill="currentColor" viewbox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" />
-         </svg>
-        </div>
-        <div>
-         <h4 class="font-semibold mb-1">Email</h4>
-         <p class="text-gray-400" id="contact-email-display">info@pantaipondokbali.com</p>
-        </div>
-       </div>
-       <div class="flex items-start gap-4">
-        <div class="w-12 h-12 bg-orange-500 rounded-full flex items-center justify-center flex-shrink-0">
-         <svg class="w-6 h-6" fill="currentColor" viewbox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z" />
-         </svg>
-        </div>
-        <div>
-         <h4 class="font-semibold mb-1">Jam Operasional</h4>
-         <p class="text-gray-400">Senin - Minggu: 06:00 - 20:00 WITA</p>
-        </div>
-       </div>
-      </div><!-- Social Share Buttons -->
-      <div class="mt-8">
-       <h4 class="font-semibold mb-4">Bagikan:</h4>
-       <div class="flex gap-3"><a href="https://www.facebook.com/sharer/sharer.php?u=https://pantaipondokbali.com" target="_blank" rel="noopener noreferrer" class="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center hover:bg-blue-700 transition">
-         <svg class="w-6 h-6" fill="currentColor" viewbox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
-         </svg></a> <a href="https://twitter.com/intent/tweet?url=https://pantaipondokbali.com&amp;text=Kunjungi Pantai Pondok Bali!" target="_blank" rel="noopener noreferrer" class="w-12 h-12 bg-sky-500 rounded-full flex items-center justify-center hover:bg-sky-600 transition">
-         <svg class="w-6 h-6" fill="currentColor" viewbox="0 0 24 24"><path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z" />
-         </svg></a> <a href="https://wa.me/?text=Kunjungi Pantai Pondok Bali! https://pantaipondokbali.com" target="_blank" rel="noopener noreferrer" class="w-12 h-12 bg-green-500 rounded-full flex items-center justify-center hover:bg-green-600 transition">
-         <svg class="w-6 h-6" fill="currentColor" viewbox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z" />
-         </svg></a> <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" class="w-12 h-12 bg-pink-500 rounded-full flex items-center justify-center hover:bg-pink-600 transition">
-         <svg class="w-6 h-6" fill="currentColor" viewbox="0 0 24 24"><path d="M12 0C8.74 0 8.333.015 7.053.072 5.775.132 4.905.333 4.14.63c-.789.306-1.459.717-2.126 1.384S.935 3.35.63 4.14C.333 4.905.131 5.775.072 7.053.012 8.333 0 8.74 0 12s.015 3.667.072 4.947c.06 1.277.261 2.148.558 2.913.306.788.717 1.459 1.384 2.126.667.666 1.336 1.079 2.126 1.384.766.296 1.636.499 2.913.558C8.333 23.988 8.74 24 12 24s3.667-.015 4.947-.072c1.277-.06 2.148-.262 2.913-.558.788-.306 1.459-.718 2.126-1.384.666-.667 1.079-1.335 1.384-2.126.296-.765.499-1.636.558-2.913.06-1.28.072-1.687.072-4.947s-.015-3.667-.072-4.947c-.06-1.277-.262-2.149-.558-2.913-.306-.789-.718-1.459-1.384-2.126C21.319 1.347 20.651.935 19.86.63c-.765-.297-1.636-.499-2.913-.558C15.667.012 15.26 0 12 0zm0 2.16c3.203 0 3.585.016 4.85.071 1.17.055 1.805.249 2.227.415.562.217.96.477 1.382.896.419.42.679.819.896 1.381.164.422.36 1.057.413 2.227.057 1.266.07 1.646.07 4.85s-.015 3.585-.074 4.85c-.061 1.17-.256 1.805-.421 2.227-.224.562-.479.96-.899 1.382-.419.419-.824.679-1.38.896-.42.164-1.065.36-2.235.413-1.274.057-1.649.07-4.859.07-3.211 0-3.586-.015-4.859-.074-1.171-.061-1.816-.256-2.236-.421-.569-.224-.96-.479-1.379-.899-.421-.419-.69-.824-.9-1.38-.165-.42-.359-1.065-.42-2.235-.045-1.26-.061-1.649-.061-4.844 0-3.196.016-3.586.061-4.861.061-1.17.255-1.814.42-2.234.21-.57.479-.96.9-1.381.419-.419.81-.689 1.379-.898.42-.166 1.051-.361 2.221-.421 1.275-.045 1.65-.06 4.859-.06l.045.03zm0 3.678c-3.405 0-6.162 2.76-6.162 6.162 0 3.405 2.76 6.162 6.162 6.162 3.405 0 6.162-2.76 6.162-6.162 0-3.405-2.76-6.162-6.162-6.162zM12 16c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4zm7.846-10.405c0 .795-.646 1.44-1.44 1.44-.795 0-1.44-.646-1.44-1.44 0-.794.646-1.439 1.44-1.439.793-.001 1.44.645 1.44 1.439z" />
-         </svg></a>
        </div>
       </div>
-     </div><!-- Contact Form -->
-     <div class="glass-effect rounded-lg p-8">
-      <h3 class="text-2xl font-bold mb-6">Kirim Pesan</h3>
-      <form id="contact-form" class="space-y-4">
-       <div><label class="block mb-2 font-semibold">Nama</label> <input type="text" id="contact-name" required class="w-full px-4 py-2 rounded-lg bg-gray-700 border border-gray-600 focus:border-blue-500 outline-none">
-       </div>
-       <div><label class="block mb-2 font-semibold">Email</label> <input type="email" id="contact-email" required class="w-full px-4 py-2 rounded-lg bg-gray-700 border border-gray-600 focus:border-blue-500 outline-none">
-       </div>
-       <div><label class="block mb-2 font-semibold">Telepon</label> <input type="tel" id="contact-phone-input" class="w-full px-4 py-2 rounded-lg bg-gray-700 border border-gray-600 focus:border-blue-500 outline-none">
-       </div>
-       <div><label class="block mb-2 font-semibold">Pesan</label> <textarea id="contact-message" rows="4" required class="w-full px-4 py-2 rounded-lg bg-gray-700 border border-gray-600 focus:border-blue-500 outline-none"></textarea>
-       </div><button type="submit" class="w-full bg-blue-500 text-white py-3 rounded-lg font-semibold hover:bg-blue-600 transition"> <span id="contact-btn-text">Kirim Pesan</span> <span id="contact-loading" class="hidden">Mengirim...</span> </button>
-       <div id="contact-success" class="hidden bg-green-500 text-white p-4 rounded-lg text-center">
-        ✓ Pesan berhasil terkirim! Kami akan segera menghubungi Anda.
-       </div>
-      </form>
      </div>
     </div>
-   </div>
-  </section><!-- Footer -->
-  <footer class="py-12" style="background: var(--bg-primary);">
-   <div class="container mx-auto px-6">
-    <div class="grid md:grid-cols-4 gap-8 mb-8">
-     <div>
-      <h3 class="text-xl font-bold mb-4">Pantai Pondok Bali</h3>
-      <p class="text-gray-400 mb-4">Destinasi wisata alam terbaik di Bali dengan pemandangan yang memukau dan fasilitas lengkap.</p>
-     </div>
-     <div>
-      <h4 class="font-bold mb-4">Link Cepat</h4>
-      <ul class="space-y-2 text-gray-400">
-       <li><a href="#home" class="hover:text-blue-400 transition">Beranda</a></li>
-       <li><a href="#about" class="hover:text-blue-400 transition">Tentang</a></li>
-       <li><a href="#tickets" class="hover:text-blue-400 transition">Tiket</a></li>
-       <li><a href="#facilities" class="hover:text-blue-400 transition">Fasilitas</a></li>
-      </ul>
-     </div>
-     <div>
-      <h4 class="font-bold mb-4">Informasi</h4>
-      <ul class="space-y-2 text-gray-400">
-       <li><a href="#events" class="hover:text-blue-400 transition">Event</a></li>
-       <li><a href="#blog" class="hover:text-blue-400 transition">Blog</a></li>
-       <li><a href="#testimonials" class="hover:text-blue-400 transition">Ulasan</a></li>
-       <li><a href="#contact" class="hover:text-blue-400 transition">Kontak</a></li>
-      </ul>
-     </div>
-     <div>
-      <h4 class="font-bold mb-4">Newsletter</h4>
-      <p class="text-gray-400 mb-4">Dapatkan update promo dan event terbaru</p>
-      <form class="flex"><input type="email" placeholder="Email Anda" class="flex-1 px-4 py-2 rounded-l-lg bg-gray-700 border border-gray-600 outline-none"> <button type="submit" class="bg-blue-500 px-4 rounded-r-lg hover:bg-blue-600 transition">
-        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-        </svg></button>
-      </form>
+   </section><!-- Contact Section / Kontak -->
+   <section id="contact" class="py-24 gradient-ocean w-full">
+    <div class="max-w-5xl mx-auto px-6">
+     <h2 id="contact-title" class="text-5xl font-bold text-center mb-16 text-white section-reveal">Hubungi Saya</h2>
+     <div class="grid md:grid-cols-3 gap-8"><a href="mailto:fabianadul26@gmail.com" class="card-glass p-8 rounded-3xl text-center text-white group section-reveal">
+       <div class="text-6xl mb-4 group-hover:scale-110 transition-transform">
+        📧
+       </div><h3 class="text-2xl font-bold mb-3">Email</h3><p id="contact-email" class="opacity-90 break-words">fabianadul26@gmail.com</p></a> <a href="https://wa.me/6285211124323" target="_blank" rel="noopener noreferrer" class="card-glass p-8 rounded-3xl text-center text-white group section-reveal" style="transition-delay: 0.1s;">
+       <div class="text-6xl mb-4 group-hover:scale-110 transition-transform">
+        📱
+       </div><h3 class="text-2xl font-bold mb-3">WhatsApp</h3><p id="contact-whatsapp" class="opacity-90">085211124323</p></a> <a href="https://instagram.com/fbiaanh" target="_blank" rel="noopener noreferrer" class="card-glass p-8 rounded-3xl text-center text-white group section-reveal" style="transition-delay: 0.2s;">
+       <div class="text-6xl mb-4 group-hover:scale-110 transition-transform">
+        📷
+       </div><h3 class="text-2xl font-bold mb-3">Instagram</h3><p id="contact-instagram" class="opacity-90">@fbiaanh</p></a>
      </div>
     </div>
-    <div class="border-t border-gray-700 pt-8 text-center text-gray-400">
-     <p id="footer-text">© 2025 Pantai Pondok Bali. Semua hak dilindungi.</p>
-    </div>
-   </div>
-  </footer><!-- Chatbot Bubble -->
-  <div class="chatbot-bubble"><button id="chatbot-toggle" class="w-16 h-16 bg-blue-500 rounded-full shadow-lg hover:bg-blue-600 transition flex items-center justify-center">
-    <svg class="w-8 h-8 text-white" fill="currentColor" viewbox="0 0 24 24"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H6l-2 2V4h16v12z" />
-    </svg></button>
-   <div id="chatbot-window" class="hidden absolute bottom-20 right-0 w-80 glass-effect rounded-lg shadow-2xl overflow-hidden">
-    <div class="bg-gradient-to-r from-blue-500 to-purple-600 p-4 flex justify-between items-center">
-     <h3 class="font-bold">Panduan Wisata 🏖����</h3><button id="chatbot-close" class="hover:bg-white hover:bg-opacity-20 rounded p-1">
-      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-      </svg></button>
-    </div>
-    <div id="chatbot-messages" class="h-96 p-4 overflow-y-auto space-y-3">
-     <div class="bg-gray-700 rounded-lg p-3 max-w-full">
-      <p>👋 Selamat datang di Pantai Pondok Bali! Saya siap membantu Anda. Pilih topik yang ingin Anda ketahui:</p>
+   </section><!-- Footer -->
+   <footer class="bg-gray-900 text-white py-12 w-full">
+    <div class="max-w-7xl mx-auto px-6">
+     <div class="text-center mb-6">
+      <h3 class="text-2xl font-bold mb-2 gradient-text" style="background: linear-gradient(135deg, #a78bfa 0%, #ec4899 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">Fabian Hernawan</h3>
+      <p class="text-gray-400">Web Developer Profesional</p>
      </div>
-     <div class="space-y-2"><button class="chatbot-option w-full text-left bg-blue-500 hover:bg-blue-600 rounded-lg p-3 transition" data-option="jam">🕐 Jam Operasional</button> <button class="chatbot-option w-full text-left bg-blue-500 hover:bg-blue-600 rounded-lg p-3 transition" data-option="harga">💰 Harga Tiket</button> <button class="chatbot-option w-full text-left bg-blue-500 hover:bg-blue-600 rounded-lg p-3 transition" data-option="fasilitas">🏖️ Fasilitas</button> <button class="chatbot-option w-full text-left bg-blue-500 hover:bg-blue-600 rounded-lg p-3 transition" data-option="lokasi">📍 Lokasi &amp; Akses</button> <button class="chatbot-option w-full text-left bg-blue-500 hover:bg-blue-600 rounded-lg p-3 transition" data-option="cuaca">☀️ Info Cuaca</button>
+     <div class="flex justify-center space-x-8 mb-6"><a href="https://instagram.com/fbiaanh" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-purple-400 transition-colors"> <span class="text-2xl">📷</span> </a> <a href="https://wa.me/6285211124323" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-purple-400 transition-colors"> <span class="text-2xl">📱</span> </a> <a href="mailto:fabianadul26@gmail.com" class="text-gray-400 hover:text-purple-400 transition-colors"> <span class="text-2xl">📧</span> </a>
+     </div>
+     <div class="text-center text-gray-400 text-sm">
+      <p id="footer-text">© Fabian – 2026</p>
      </div>
     </div>
-   </div>
+   </footer>
   </div>
   <script>
-        const defaultConfig = {
-            site_title: "Pantai Pondok Bali",
-            hero_title: "Surga Tersembunyi di Pondok Bali",
-            hero_subtitle: "Keindahan alam yang memukau menanti Anda",
-            contact_email: "info@pantaipondokbali.com",
-            contact_phone: "+62 361 123456",
-            footer_text: "© 2025 Pantai Pondok Bali. Semua hak dilindungi.",
-            background_color: "#0f172a",
-            surface_color: "#1e293b",
-            text_color: "#f1f5f9",
-            primary_action_color: "#3b82f6",
-            secondary_action_color: "#06b6d4",
-            font_family: "Segoe UI",
-            font_size: 16
-        };
+    const defaultConfig = {
+      site_name: "Fabian Hernawan",
+      tagline: "Web Developer Profesional",
+      hero_greeting: "Hai nama saya",
+      hero_name: "Fabian",
+      hero_description: "siswa kelas 12 SMAN 1 Subang",
+      hero_hobby: "bermain futsal",
+      cta_button: "Lihat Portofolio",
+      about_title: "Tentang Saya",
+      skills_title: "Keahlian",
+      portfolio_title: "Portofolio & Pengalaman",
+      contact_title: "Hubungi Saya",
+      contact_email: "fabianadul26@gmail.com",
+      contact_whatsapp: "085211124323",
+      contact_instagram: "@fbiaanh",
+      footer_text: "© Fabian – 2026",
+      background_color: "#0f2027",
+      surface_color: "#ffffff",
+      text_color: "#1f2937",
+      primary_action_color: "#667eea",
+      secondary_action_color: "#764ba2",
+      font_family: "Inter",
+      font_size: 16
+    };
 
-        let currentRecordCount = 0;
-        let currentRating = 0;
+    async function onConfigChange(config) {
+      const customFont = config.font_family || defaultConfig.font_family;
+      const baseSize = config.font_size || defaultConfig.font_size;
+      const baseFontStack = '-apple-system, BlinkMacSystemFont, sans-serif';
 
-        async function onConfigChange(config) {
-            document.getElementById('site-title').textContent = config.site_title || defaultConfig.site_title;
-            document.getElementById('hero-title').textContent = config.hero_title || defaultConfig.hero_title;
-            document.getElementById('hero-subtitle').textContent = config.hero_subtitle || defaultConfig.hero_subtitle;
-            document.getElementById('contact-email-display').textContent = config.contact_email || defaultConfig.contact_email;
-            document.getElementById('contact-phone-display').textContent = config.contact_phone || defaultConfig.contact_phone;
-            document.getElementById('footer-text').textContent = config.footer_text || defaultConfig.footer_text;
+      document.body.style.fontFamily = `${customFont}, ${baseFontStack}`;
+      document.body.style.fontSize = `${baseSize}px`;
 
-            const bgColor = config.background_color || defaultConfig.background_color;
-            const surfaceColor = config.surface_color || defaultConfig.surface_color;
-            const textColor = config.text_color || defaultConfig.text_color;
-            const primaryColor = config.primary_action_color || defaultConfig.primary_action_color;
-            const secondaryColor = config.secondary_action_color || defaultConfig.secondary_action_color;
+      document.getElementById('site-name').textContent = config.site_name || defaultConfig.site_name;
+      document.getElementById('tagline').textContent = config.tagline || defaultConfig.tagline;
+      document.getElementById('hero-greeting').textContent = config.hero_greeting || defaultConfig.hero_greeting;
+      document.getElementById('hero-name').textContent = config.hero_name || defaultConfig.hero_name;
+      document.getElementById('hero-description').textContent = config.hero_description || defaultConfig.hero_description;
+      document.getElementById('hero-hobby').querySelector('span:last-child').textContent = config.hero_hobby || defaultConfig.hero_hobby;
+      document.getElementById('cta-button').textContent = config.cta_button || defaultConfig.cta_button;
+      document.getElementById('about-title').textContent = config.about_title || defaultConfig.about_title;
+      document.getElementById('skills-title').textContent = config.skills_title || defaultConfig.skills_title;
+      document.getElementById('portfolio-title').textContent = config.portfolio_title || defaultConfig.portfolio_title;
+      document.getElementById('contact-title').textContent = config.contact_title || defaultConfig.contact_title;
+      document.getElementById('contact-email').textContent = config.contact_email || defaultConfig.contact_email;
+      document.getElementById('contact-whatsapp').textContent = config.contact_whatsapp || defaultConfig.contact_whatsapp;
+      document.getElementById('contact-instagram').textContent = config.contact_instagram || defaultConfig.contact_instagram;
+      document.getElementById('footer-text').textContent = config.footer_text || defaultConfig.footer_text;
 
-            document.documentElement.style.setProperty('--bg-primary', bgColor);
-            document.documentElement.style.setProperty('--bg-secondary', surfaceColor);
-            document.documentElement.style.setProperty('--text-primary', textColor);
-            document.documentElement.style.setProperty('--accent-primary', primaryColor);
-            document.documentElement.style.setProperty('--accent-secondary', secondaryColor);
+      const bgColor = config.background_color || defaultConfig.background_color;
+      const primaryColor = config.primary_action_color || defaultConfig.primary_action_color;
+      const secondaryColor = config.secondary_action_color || defaultConfig.secondary_action_color;
 
-            const fontFamily = config.font_family || defaultConfig.font_family;
-            const baseFontSize = config.font_size || defaultConfig.font_size;
-            const fontStack = `${fontFamily}, Segoe UI, Tahoma, Geneva, Verdana, sans-serif`;
+      const oceanSections = document.querySelectorAll('.gradient-ocean');
+      oceanSections.forEach(el => {
+        el.style.background = `linear-gradient(135deg, ${bgColor} 0%, #203a43 50%, #2c5364 100%)`;
+      });
 
-            document.body.style.fontFamily = fontStack;
-            document.body.style.fontSize = `${baseFontSize}px`;
+      const accentElements = document.querySelectorAll('.gradient-accent, .btn-gradient');
+      accentElements.forEach(el => {
+        el.style.background = `linear-gradient(135deg, ${primaryColor} 0%, ${secondaryColor} 100%)`;
+      });
 
-            const headings = document.querySelectorAll('h1, h2, h3, h4');
-            headings.forEach(h => {
-                h.style.fontFamily = fontStack;
-                if (h.tagName === 'H1') h.style.fontSize = `${baseFontSize * 2.5}px`;
-                if (h.tagName === 'H2') h.style.fontSize = `${baseFontSize * 2}px`;
-                if (h.tagName === 'H3') h.style.fontSize = `${baseFontSize * 1.5}px`;
-                if (h.tagName === 'H4') h.style.fontSize = `${baseFontSize * 1.25}px`;
-            });
+      const gradientTexts = document.querySelectorAll('.gradient-text');
+      gradientTexts.forEach(el => {
+        el.style.background = `linear-gradient(135deg, ${primaryColor} 0%, ${secondaryColor} 100%)`;
+        el.style.webkitBackgroundClip = 'text';
+        el.style.webkitTextFillColor = 'transparent';
+        el.style.backgroundClip = 'text';
+      });
 
-            const paragraphs = document.querySelectorAll('p, li, label, input, textarea, select, button');
-            paragraphs.forEach(el => {
-                el.style.fontFamily = fontStack;
-            });
+      document.getElementById('hero-name').style.fontSize = `${baseSize * 4.5}px`;
+      document.getElementById('about-title').style.fontSize = `${baseSize * 3}px`;
+      document.getElementById('skills-title').style.fontSize = `${baseSize * 3}px`;
+      document.getElementById('portfolio-title').style.fontSize = `${baseSize * 3}px`;
+      document.getElementById('contact-title').style.fontSize = `${baseSize * 3}px`;
+    }
+
+    if (window.elementSdk) {
+      window.elementSdk.init({
+        defaultConfig,
+        onConfigChange,
+        mapToCapabilities: (config) => ({
+          recolorables: [
+            {
+              get: () => config.background_color || defaultConfig.background_color,
+              set: (value) => {
+                config.background_color = value;
+                window.elementSdk.setConfig({ background_color: value });
+              }
+            },
+            {
+              get: () => config.surface_color || defaultConfig.surface_color,
+              set: (value) => {
+                config.surface_color = value;
+                window.elementSdk.setConfig({ surface_color: value });
+              }
+            },
+            {
+              get: () => config.text_color || defaultConfig.text_color,
+              set: (value) => {
+                config.text_color = value;
+                window.elementSdk.setConfig({ text_color: value });
+              }
+            },
+            {
+              get: () => config.primary_action_color || defaultConfig.primary_action_color,
+              set: (value) => {
+                config.primary_action_color = value;
+                window.elementSdk.setConfig({ primary_action_color: value });
+              }
+            },
+            {
+              get: () => config.secondary_action_color || defaultConfig.secondary_action_color,
+              set: (value) => {
+                config.secondary_action_color = value;
+                window.elementSdk.setConfig({ secondary_action_color: value });
+              }
+            }
+          ],
+          borderables: [],
+          fontEditable: {
+            get: () => config.font_family || defaultConfig.font_family,
+            set: (value) => {
+              config.font_family = value;
+              window.elementSdk.setConfig({ font_family: value });
+            }
+          },
+          fontSizeable: {
+            get: () => config.font_size || defaultConfig.font_size,
+            set: (value) => {
+              config.font_size = value;
+              window.elementSdk.setConfig({ font_size: value });
+            }
+          }
+        }),
+        mapToEditPanelValues: (config) => new Map([
+          ["site_name", config.site_name || defaultConfig.site_name],
+          ["tagline", config.tagline || defaultConfig.tagline],
+          ["hero_greeting", config.hero_greeting || defaultConfig.hero_greeting],
+          ["hero_name", config.hero_name || defaultConfig.hero_name],
+          ["hero_description", config.hero_description || defaultConfig.hero_description],
+          ["hero_hobby", config.hero_hobby || defaultConfig.hero_hobby],
+          ["cta_button", config.cta_button || defaultConfig.cta_button],
+          ["about_title", config.about_title || defaultConfig.about_title],
+          ["skills_title", config.skills_title || defaultConfig.skills_title],
+          ["portfolio_title", config.portfolio_title || defaultConfig.portfolio_title],
+          ["contact_title", config.contact_title || defaultConfig.contact_title],
+          ["contact_email", config.contact_email || defaultConfig.contact_email],
+          ["contact_whatsapp", config.contact_whatsapp || defaultConfig.contact_whatsapp],
+          ["contact_instagram", config.contact_instagram || defaultConfig.contact_instagram],
+          ["footer_text", config.footer_text || defaultConfig.footer_text]
+        ])
+      });
+    }
+
+    // Mobile menu toggle
+    document.getElementById('mobile-menu-btn').addEventListener('click', () => {
+      const menu = document.getElementById('mobile-menu');
+      menu.classList.toggle('hidden');
+    });
+
+    // CTA button scroll
+    document.getElementById('cta-button').addEventListener('click', () => {
+      document.getElementById('portfolio').scrollIntoView({ behavior: 'smooth' });
+    });
+
+    // Smooth scroll for nav links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth' });
+          const mobileMenu = document.getElementById('mobile-menu');
+          if (!mobileMenu.classList.contains('hidden')) {
+            mobileMenu.classList.add('hidden');
+          }
         }
+      });
+    });
 
-        if (window.elementSdk) {
-            window.elementSdk.init({
-                defaultConfig,
-                onConfigChange,
-                mapToCapabilities: (config) => ({
-                    recolorables: [
-                        {
-                            get: () => config.background_color || defaultConfig.background_color,
-                            set: (value) => {
-                                config.background_color = value;
-                                window.elementSdk.setConfig({ background_color: value });
-                            }
-                        },
-                        {
-                            get: () => config.surface_color || defaultConfig.surface_color,
-                            set: (value) => {
-                                config.surface_color = value;
-                                window.elementSdk.setConfig({ surface_color: value });
-                            }
-                        },
-                        {
-                            get: () => config.text_color || defaultConfig.text_color,
-                            set: (value) => {
-                                config.text_color = value;
-                                window.elementSdk.setConfig({ text_color: value });
-                            }
-                        },
-                        {
-                            get: () => config.primary_action_color || defaultConfig.primary_action_color,
-                            set: (value) => {
-                                config.primary_action_color = value;
-                                window.elementSdk.setConfig({ primary_action_color: value });
-                            }
-                        },
-                        {
-                            get: () => config.secondary_action_color || defaultConfig.secondary_action_color,
-                            set: (value) => {
-                                config.secondary_action_color = value;
-                                window.elementSdk.setConfig({ secondary_action_color: value });
-                            }
-                        }
-                    ],
-                    borderables: [],
-                    fontEditable: {
-                        get: () => config.font_family || defaultConfig.font_family,
-                        set: (value) => {
-                            config.font_family = value;
-                            window.elementSdk.setConfig({ font_family: value });
-                        }
-                    },
-                    fontSizeable: {
-                        get: () => config.font_size || defaultConfig.font_size,
-                        set: (value) => {
-                            config.font_size = value;
-                            window.elementSdk.setConfig({ font_size: value });
-                        }
-                    }
-                }),
-                mapToEditPanelValues: (config) => new Map([
-                    ["site_title", config.site_title || defaultConfig.site_title],
-                    ["hero_title", config.hero_title || defaultConfig.hero_title],
-                    ["hero_subtitle", config.hero_subtitle || defaultConfig.hero_subtitle],
-                    ["contact_email", config.contact_email || defaultConfig.contact_email],
-                    ["contact_phone", config.contact_phone || defaultConfig.contact_phone],
-                    ["footer_text", config.footer_text || defaultConfig.footer_text]
-                ])
-            });
+    // Intersection Observer for section reveals
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -100px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
         }
+      });
+    }, observerOptions);
 
-        const dataHandler = {
-            onDataChanged(data) {
-                currentRecordCount = data.length;
-            }
-        };
+    document.querySelectorAll('.section-reveal').forEach(section => {
+      observer.observe(section);
+    });
 
-        if (window.dataSdk) {
-            window.dataSdk.init(dataHandler);
+    // Skill bar animation
+    const skillObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const skillBars = entry.target.querySelectorAll('.skill-bar');
+          skillBars.forEach(bar => {
+            const width = bar.getAttribute('data-width');
+            setTimeout(() => {
+              bar.style.width = width;
+            }, 200);
+          });
+          skillObserver.unobserve(entry.target);
         }
+      });
+    }, { threshold: 0.5 });
 
-        function animateCounter(id, target) {
-            const element = document.getElementById(id);
-            let current = 0;
-            const increment = target / 50;
-            const timer = setInterval(() => {
-                current += increment;
-                if (current >= target) {
-                    element.textContent = Math.floor(target);
-                    clearInterval(timer);
-                } else {
-                    element.textContent = Math.floor(current);
-                }
-            }, 30);
-        }
-
-        const observerOptions = {
-            threshold: 0.3
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    animateCounter('counter-visitors', 50000);
-                    animateCounter('counter-rating', 4.8);
-                    animateCounter('counter-facilities', 15);
-                    animateCounter('counter-events', 8);
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, observerOptions);
-
-        const counterSection = document.querySelector('#counter-visitors').closest('section');
-        if (counterSection) {
-            observer.observe(counterSection);
-        }
-
-        document.getElementById('mobile-menu-toggle').addEventListener('click', () => {
-            const menu = document.getElementById('mobile-menu');
-            menu.classList.toggle('hidden');
-        });
-
-        document.getElementById('theme-toggle').addEventListener('click', () => {
-            document.body.classList.toggle('light-mode');
-        });
-
-        const filterButtons = document.querySelectorAll('.filter-btn');
-        const galleryItems = document.querySelectorAll('.gallery-item');
-
-        filterButtons.forEach(btn => {
-            btn.addEventListener('click', () => {
-                filterButtons.forEach(b => {
-                    b.classList.remove('active', 'bg-blue-500');
-                    b.classList.add('bg-gray-700');
-                });
-                btn.classList.add('active', 'bg-blue-500');
-                btn.classList.remove('bg-gray-700');
-
-                const filter = btn.dataset.filter;
-                galleryItems.forEach(item => {
-                    if (filter === 'all' || item.dataset.category === filter) {
-                        item.style.display = 'block';
-                    } else {
-                        item.style.display = 'none';
-                    }
-                });
-            });
-        });
-
-        const ratingStars = document.querySelectorAll('.rating-star');
-        ratingStars.forEach(star => {
-            star.addEventListener('click', (e) => {
-                e.preventDefault();
-                currentRating = parseInt(star.dataset.rating);
-                document.getElementById('review-rating').value = currentRating;
-                ratingStars.forEach((s, index) => {
-                    if (index < currentRating) {
-                        s.classList.remove('text-gray-600');
-                        s.classList.add('text-yellow-400');
-                    } else {
-                        s.classList.remove('text-yellow-400');
-                        s.classList.add('text-gray-600');
-                    }
-                });
-            });
-        });
-
-        document.getElementById('booking-form').addEventListener('submit', async (e) => {
-            e.preventDefault();
-
-            if (currentRecordCount >= 999) {
-                const successDiv = document.getElementById('booking-success');
-                successDiv.textContent = '⚠️ Batas maksimum 999 pemesanan tercapai. Silakan hubungi kami langsung.';
-                successDiv.classList.remove('bg-green-500', 'hidden');
-                successDiv.classList.add('bg-orange-500');
-                setTimeout(() => {
-                    successDiv.classList.add('hidden');
-                    successDiv.classList.remove('bg-orange-500');
-                    successDiv.classList.add('bg-green-500');
-                }, 5000);
-                return;
-            }
-
-            const btnText = document.getElementById('booking-btn-text');
-            const btnLoading = document.getElementById('booking-loading');
-            btnText.classList.add('hidden');
-            btnLoading.classList.remove('hidden');
-
-            const formData = {
-                id: Date.now().toString(),
-                type: 'booking',
-                name: document.getElementById('booking-name').value,
-                email: document.getElementById('booking-email').value,
-                phone: document.getElementById('booking-phone').value,
-                date: document.getElementById('booking-date').value,
-                ticketType: document.getElementById('booking-ticket-type').value,
-                visitors: parseInt(document.getElementById('booking-visitors').value),
-                timestamp: new Date().toISOString()
-            };
-
-            if (window.dataSdk) {
-                const result = await window.dataSdk.create(formData);
-                
-                btnText.classList.remove('hidden');
-                btnLoading.classList.add('hidden');
-
-                if (result.isOk) {
-                    document.getElementById('booking-form').reset();
-                    const successDiv = document.getElementById('booking-success');
-                    successDiv.classList.remove('hidden');
-                    setTimeout(() => successDiv.classList.add('hidden'), 5000);
-                } else {
-                    const successDiv = document.getElementById('booking-success');
-                    successDiv.textContent = '❌ Gagal mengirim pemesanan. Silakan coba lagi.';
-                    successDiv.classList.remove('bg-green-500', 'hidden');
-                    successDiv.classList.add('bg-red-500');
-                    setTimeout(() => {
-                        successDiv.classList.add('hidden');
-                        successDiv.classList.remove('bg-red-500');
-                        successDiv.classList.add('bg-green-500');
-                        successDiv.textContent = '✓ Pemesanan berhasil! Kami akan menghubungi Anda segera.';
-                    }, 5000);
-                }
-            }
-        });
-
-        document.getElementById('review-form').addEventListener('submit', async (e) => {
-            e.preventDefault();
-
-            if (currentRecordCount >= 999) {
-                const successDiv = document.getElementById('review-success');
-                successDiv.textContent = '⚠️ Batas maksimum 999 ulasan tercapai.';
-                successDiv.classList.remove('bg-green-500', 'hidden');
-                successDiv.classList.add('bg-orange-500');
-                setTimeout(() => {
-                    successDiv.classList.add('hidden');
-                    successDiv.classList.remove('bg-orange-500');
-                    successDiv.classList.add('bg-green-500');
-                }, 5000);
-                return;
-            }
-
-            const btnText = document.getElementById('review-btn-text');
-            const btnLoading = document.getElementById('review-loading');
-            btnText.classList.add('hidden');
-            btnLoading.classList.remove('hidden');
-
-            const formData = {
-                id: Date.now().toString(),
-                type: 'review',
-                name: document.getElementById('review-name').value,
-                email: document.getElementById('review-email').value,
-                rating: parseInt(document.getElementById('review-rating').value),
-                message: document.getElementById('review-message').value,
-                timestamp: new Date().toISOString()
-            };
-
-            if (window.dataSdk) {
-                const result = await window.dataSdk.create(formData);
-                
-                btnText.classList.remove('hidden');
-                btnLoading.classList.add('hidden');
-
-                if (result.isOk) {
-                    document.getElementById('review-form').reset();
-                    currentRating = 0;
-                    ratingStars.forEach(s => {
-                        s.classList.remove('text-yellow-400');
-                        s.classList.add('text-gray-600');
-                    });
-                    const successDiv = document.getElementById('review-success');
-                    successDiv.classList.remove('hidden');
-                    setTimeout(() => successDiv.classList.add('hidden'), 5000);
-                } else {
-                    const successDiv = document.getElementById('review-success');
-                    successDiv.textContent = '❌ Gagal mengirim ulasan. Silakan coba lagi.';
-                    successDiv.classList.remove('bg-green-500', 'hidden');
-                    successDiv.classList.add('bg-red-500');
-                    setTimeout(() => {
-                        successDiv.classList.add('hidden');
-                        successDiv.classList.remove('bg-red-500');
-                        successDiv.classList.add('bg-green-500');
-                        successDiv.textContent = '✓ Terima kasih atas ulasan Anda!';
-                    }, 5000);
-                }
-            }
-        });
-
-        document.getElementById('contact-form').addEventListener('submit', async (e) => {
-            e.preventDefault();
-
-            if (currentRecordCount >= 999) {
-                const successDiv = document.getElementById('contact-success');
-                successDiv.textContent = '⚠️ Batas maksimum 999 pesan tercapai. Silakan hubungi kami via telepon.';
-                successDiv.classList.remove('bg-green-500', 'hidden');
-                successDiv.classList.add('bg-orange-500');
-                setTimeout(() => {
-                    successDiv.classList.add('hidden');
-                    successDiv.classList.remove('bg-orange-500');
-                    successDiv.classList.add('bg-green-500');
-                }, 5000);
-                return;
-            }
-
-            const btnText = document.getElementById('contact-btn-text');
-            const btnLoading = document.getElementById('contact-loading');
-            btnText.classList.add('hidden');
-            btnLoading.classList.remove('hidden');
-
-            const formData = {
-                id: Date.now().toString(),
-                type: 'contact',
-                name: document.getElementById('contact-name').value,
-                email: document.getElementById('contact-email').value,
-                phone: document.getElementById('contact-phone-input').value,
-                message: document.getElementById('contact-message').value,
-                timestamp: new Date().toISOString()
-            };
-
-            if (window.dataSdk) {
-                const result = await window.dataSdk.create(formData);
-                
-                btnText.classList.remove('hidden');
-                btnLoading.classList.add('hidden');
-
-                if (result.isOk) {
-                    document.getElementById('contact-form').reset();
-                    const successDiv = document.getElementById('contact-success');
-                    successDiv.classList.remove('hidden');
-                    setTimeout(() => successDiv.classList.add('hidden'), 5000);
-                } else {
-                    const successDiv = document.getElementById('contact-success');
-                    successDiv.textContent = '❌ Gagal mengirim pesan. Silakan coba lagi.';
-                    successDiv.classList.remove('bg-green-500', 'hidden');
-                    successDiv.classList.add('bg-red-500');
-                    setTimeout(() => {
-                        successDiv.classList.add('hidden');
-                        successDiv.classList.remove('bg-red-500');
-                        successDiv.classList.add('bg-green-500');
-                        successDiv.textContent = '✓ Pesan berhasil terkirim! Kami akan segera menghubungi Anda.';
-                    }, 5000);
-                }
-            }
-        });
-
-        document.getElementById('chatbot-toggle').addEventListener('click', () => {
-            document.getElementById('chatbot-window').classList.toggle('hidden');
-        });
-
-        document.getElementById('chatbot-close').addEventListener('click', () => {
-            document.getElementById('chatbot-window').classList.add('hidden');
-        });
-
-        const chatbotResponses = {
-            jam: '🕐 Pantai Pondok Bali buka setiap hari dari jam 06:00 - 20:00 WITA. Kami beroperasi sepanjang minggu untuk kenyamanan Anda!',
-            harga: '💰 Harga tiket kami:\n• Reguler: Rp 50.000\n• Premium: Rp 150.000\n• VIP: Rp 300.000\n\nSilakan pesan melalui formulir di section Tiket!',
-            fasilitas: '🏖️ Fasilitas kami meliputi:\n• Kamar ganti & shower\n• Restoran & kafe\n• Area parkir luas\n• Penyewaan peralatan\n• Gazebo\n• Toko suvenir',
-            lokasi: '📍 Kami berlokasi di Jl. Pantai Selatan No. 123, Badung, Bali. Sekitar 25 km dari Denpasar (30 menit berkendara). Akses mudah dengan mobil atau motor!',
-            cuaca: '☀️ Cuaca hari ini: 28°C - Cerah\nPantai Pondok Bali memiliki cuaca tropis yang hangat sepanjang tahun. Waktu terbaik berkunjung adalah pagi hari atau sore hari untuk menikmati sunset!'
-        };
-
-        document.querySelectorAll('.chatbot-option').forEach(btn => {
-            btn.addEventListener('click', () => {
-                const option = btn.dataset.option;
-                const messagesDiv = document.getElementById('chatbot-messages');
-                
-                const userMessage = document.createElement('div');
-                userMessage.className = 'bg-blue-500 rounded-lg p-3 max-w-full ml-auto text-right';
-                userMessage.textContent = btn.textContent;
-                messagesDiv.appendChild(userMessage);
-
-                setTimeout(() => {
-                    const botMessage = document.createElement('div');
-                    botMessage.className = 'bg-gray-700 rounded-lg p-3 max-w-full';
-                    botMessage.style.whiteSpace = 'pre-line';
-                    botMessage.textContent = chatbotResponses[option];
-                    messagesDiv.appendChild(botMessage);
-                    messagesDiv.scrollTop = messagesDiv.scrollHeight;
-                }, 500);
-
-                messagesDiv.scrollTop = messagesDiv.scrollHeight;
-            });
-        });
-
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                    const mobileMenu = document.getElementById('mobile-menu');
-                    if (!mobileMenu.classList.contains('hidden')) {
-                        mobileMenu.classList.add('hidden');
-                    }
-                }
-            });
-        });
-    </script>
- <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9a14d1c684064ad3',t:'MTc2MzYwODkxMC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+    document.querySelectorAll('#skills .card-white').forEach(card => {
+      skillObserver.observe(card);
+    });
+  </script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9c8848384641283c',t:'MTc3MDE4ODMzMy4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
